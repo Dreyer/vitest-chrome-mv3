@@ -14,5 +14,13 @@ export default {
     },
   ],
   external: ['vitest'],
-  plugins: [typescript(), json()],
+  plugins: [
+    typescript({
+      declaration: true,
+      declarationDir: './lib',
+      rootDir: './src',
+      exclude: ['tests/**/*.ts', 'node_modules/**'],
+    }),
+    json(),
+  ],
 };
