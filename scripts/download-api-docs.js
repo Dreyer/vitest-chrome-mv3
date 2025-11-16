@@ -12,8 +12,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const INPUT_FILE = join(__dirname, '../docs/developer.chrome.com.docs.extensions.reference.api/index.txt');
-const OUT_DIR = join(__dirname, '../markdown');
+const INPUT_FILE = join(__dirname, '../docs/chrome_extensions_reference.txt');
+const OUT_DIR = join(__dirname, '../chrome_extensions_reference');
 
 // Configuration
 const MAX_RETRIES = 3;

@@ -38,16 +38,16 @@
     "test",
     "unit-test"
   ],
-  "author": "",
+  "author": "Matthew Dreyer <matthew@smplcty.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/username/vitest-chrome-mv3.git"
+    "url": "git+https://github.com/Dreyer/vitest-chrome-mv3.git"
   },
   "bugs": {
-    "url": "https://github.com/username/vitest-chrome-mv3/issues"
+    "url": "https://github.com/Dreyer/vitest-chrome-mv3/issues"
   },
-  "homepage": "https://github.com/username/vitest-chrome-mv3#readme",
+  "homepage": "https://github.com/Dreyer/vitest-chrome-mv3#readme",
   "dependencies": {},
   "devDependencies": {
     "@rollup/plugin-json": "^6.1.0",
