@@ -21,7 +21,7 @@
     "test": "vitest run",
     "build:docs": "node scripts/download-api-docs.js",
     "build:schema": "node scripts/generate-schema.js",
-    "build": "rollup -c",
+    "build": "rollup -c --forceExit",
     "prepublishOnly": "npm run build && npm test",
     "preversion": "npm test",
     "postversion": "git push && git push --tags"

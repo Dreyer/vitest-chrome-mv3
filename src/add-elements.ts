@@ -28,7 +28,6 @@ interface SchemaData<
 
 export const addEvent = (schema: any, target: object) => {
   const event = (...args: any[]) => {
-    // @ts-expect-error - no index signature
     return event.callListeners(...args)
   }
   event.listeners = new Set<(...args: any[]) => void>()
@@ -74,7 +73,7 @@ export const addFunction = (
     const fn = vi.fn((path: string) => {
       return `chrome-extension://test-extension-id/${path}`
     })
-    fn.clear = () => fn.mockClear()
+    ;(fn as any).clear = () => fn.mockClear()
     Object.assign(target, { [schema.name]: fn })
     return fn
   }
@@ -89,7 +88,7 @@ export const addFunction = (
         return Promise.resolve(undefined)
       }
     })
-    fn.clear = () => fn.mockClear()
+    ;(fn as any).clear = () => fn.mockClear()
     Object.assign(target, { [schema.name]: fn })
     return fn
   }
@@ -104,7 +103,7 @@ export const addFunction = (
     }
     throw new Error(unimplementedError)
   })
-  fn.clear = () => {
+  ;(fn as any).clear = () => {
     fn.mockClear()
   }
   Object.assign(target, { [schema.name]: fn })

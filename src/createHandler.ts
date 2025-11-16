@@ -11,12 +11,13 @@ import { VitestChrome } from './vitest-chrome'
 export function createHandler(
   schema: any = vitestChromeSchema as any,
   namespace = 'chrome',
-): ProxyHandler<VitestChrome> {
+): ProxyHandler<VitestChrome> & { clear(): void } {
   const mocks = new Set<() => void>()
   const handler: ProxyHandler<VitestChrome> & {
-    clear?: () => void
+    clear: () => void
     apply?: (target: any, thisArg: any, argArray: any[]) => any
   } = {
+    clear: () => {},
     ownKeys() {
       return schema ? Reflect.ownKeys(schema) : []
     },
@@ -96,7 +97,7 @@ export function createHandler(
             }
             throw new Error(`${nestedNamespace} is not implemented`)
           })
-          callableFn.clear = () => {
+          ;(callableFn as any).clear = () => {
             callableFn.mockClear()
           }
           
@@ -142,7 +143,7 @@ export function createHandler(
             has(target, key) {
               return proxyHandler.has ? proxyHandler.has(targetObj, key) : false
             },
-            set(target, key, value) {
+            set(target, key, value, receiver) {
               return proxyHandler.set ? proxyHandler.set(targetObj, key, value, receiver) : true
             },
             deleteProperty(target, key) {
@@ -152,14 +153,13 @@ export function createHandler(
             },
           })
           Object.assign(target, { [key]: combinedProxy })
-          mocks.add(callableFn.clear)
+          mocks.add((callableFn as any).clear)
           return combinedProxy
         }
       }
       
       if (schema && key in schema) {
         let mockedElement: any
-        // @ts-expect-error - schema[key] may not have a type
         switch (schema[key].type) {
           case 'event':
             mockedElement = addEvent(schema[key], target)
@@ -189,16 +189,16 @@ export function createHandler(
               Object.assign(target, { [key]: storage })
 
               // Add clear methods to mocks set
-              if (typeof localArea.clearAll === 'function') mocks.add(localArea.clearAll)
-              if (typeof syncArea.clearAll === 'function') mocks.add(syncArea.clearAll)
-              if (typeof managedArea.clearAll === 'function') mocks.add(managedArea.clearAll)
+              if (typeof (localArea as any).clearAll === 'function') mocks.add((localArea as any).clearAll)
+              if (typeof (syncArea as any).clearAll === 'function') mocks.add((syncArea as any).clearAll)
+              if (typeof (managedArea as any).clearAll === 'function') mocks.add((managedArea as any).clearAll)
               if (typeof onChangedEvent.clear === 'function') mocks.add(onChangedEvent.clear)
 
               return storage
             } else {
               const proxy = new Proxy<Record<string, any>>(
                 {},
-                createHandler(schema[key], `${namespace}.${key}`),
+                createHandler(schema[key], `${namespace}.${String(key)}`),
               )
               Object.assign(target, { [key]: proxy })
               return proxy
@@ -218,8 +218,8 @@ export function createHandler(
           if (functionSchema) {
             const fn = addFunction(functionSchema, target, namespace)
             Object.assign(target, { [key]: fn })
-            if (typeof fn.clear === 'function') {
-              mocks.add(fn.clear)
+            if (typeof (fn as any).clear === 'function') {
+              mocks.add((fn as any).clear)
             }
             return fn
           }
@@ -268,7 +268,7 @@ export function createHandler(
             }
             throw new Error(`${nestedNamespace} is not implemented`)
           })
-          callableFn.clear = () => {
+          ;(callableFn as any).clear = () => {
             callableFn.mockClear()
           }
           
@@ -312,7 +312,7 @@ export function createHandler(
             has(target, key) {
               return proxyHandler.has ? proxyHandler.has(targetObj, key) : false
             },
-            set(target, key, value) {
+            set(target, key, value, receiver) {
               return proxyHandler.set ? proxyHandler.set(targetObj, key, value, receiver) : true
             },
             deleteProperty(target, key) {
@@ -322,14 +322,14 @@ export function createHandler(
             },
           })
           Object.assign(target, { [key]: combinedProxy })
-          mocks.add(callableFn.clear)
+          mocks.add((callableFn as any).clear)
           return combinedProxy
         }
       }
     },
   }
 
-  handler.clear = () => {
+  ;(handler as any).clear = () => {
     mocks.forEach((mock) => mock())
   }
 

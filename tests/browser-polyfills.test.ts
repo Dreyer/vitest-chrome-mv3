@@ -21,12 +21,12 @@ describe('Browser API Polyfills', () => {
     expect(item.types).toContain('text/html')
   })
 
-  test('ClipboardItem handles Blob data', () => {
+  test('ClipboardItem handles Blob data', async () => {
     const blob = new Blob(['test content'], { type: 'text/plain' })
     const data = { 'text/plain': blob }
 
     const item = new globalThis.ClipboardItem(data)
     expect(item.types).toContain('text/plain')
-    expect(item.getType('text/plain')).toBe(blob)
+    await expect(item.getType('text/plain')).resolves.toBe(blob)
   })
 })

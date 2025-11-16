@@ -9,10 +9,14 @@ describe('chrome.runtime', () => {
       version: '1.0.0',
     }
 
-    chrome.runtime.getManifest.mockImplementation(() => manifest)
+    const originalGetManifest = chrome.runtime.getManifest
+    chrome.runtime.getManifest = vi.fn().mockReturnValue(manifest)
 
     expect(chrome.runtime.getManifest()).toEqual(manifest)
-    expect(chrome.runtime.getManifest).toBeCalled()
+    expect(chrome.runtime.getManifest).toHaveBeenCalled()
+
+    // Restore original function
+    chrome.runtime.getManifest = originalGetManifest
   })
 
   test('getURL returns chrome-extension URL', () => {
@@ -56,6 +60,7 @@ describe('chrome.runtime', () => {
     expect(listenerSpy).not.toBeCalled()
     expect(chrome.runtime.onMessage.hasListeners()).toBe(true)
 
+    // @ts-expect-error - callListeners is a mock utility method
     chrome.runtime.onMessage.callListeners(
       { greeting: 'hello' }, // message
       {}, // MessageSender object
@@ -80,13 +85,16 @@ describe('chrome.runtime', () => {
     }
 
     // mock implementation
-    // @ts-expect-error - sendMessage is not a part of the chrome namespace
-    chrome.runtime.sendMessage.mockImplementation((message, callback) => {
+    const originalSendMessage = chrome.runtime.sendMessage
+    // @ts-expect-error - overriding chrome API for testing
+    chrome.runtime.sendMessage = vi.fn((message, callback) => {
+      // @ts-expect-error - testing lastError assignment in mock
       chrome.runtime.lastError = lastError
 
       callback(response)
 
       // lastError is undefined outside of a callback
+      // @ts-expect-error - testing lastError deletion in mock
       delete chrome.runtime.lastError
     })
 
@@ -107,5 +115,8 @@ describe('chrome.runtime', () => {
 
     // lastError has been cleared
     expect(chrome.runtime.lastError).toBeUndefined()
+
+    // Restore original function
+    chrome.runtime.sendMessage = originalSendMessage
   })
 })
