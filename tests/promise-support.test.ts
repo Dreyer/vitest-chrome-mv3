@@ -7,11 +7,15 @@ test('promise-based function should return a promise', async () => {
 
   // Since chrome.tabs.get is now promise-based in our mock,
   // we can mock its resolved value.
-  vi.spyOn(chrome.tabs, 'get').mockResolvedValue(mockTab);
+  const originalGet = chrome.tabs.get;
+  chrome.tabs.get = vi.fn().mockResolvedValue(mockTab);
 
   const promise = chrome.tabs.get(tabId);
 
   expect(promise).toBeInstanceOf(Promise);
   await expect(promise).resolves.toEqual(mockTab);
   expect(chrome.tabs.get).toHaveBeenCalledWith(tabId);
+
+  // Restore original function
+  chrome.tabs.get = originalGet;
 });

@@ -15,21 +15,36 @@ describe('chrome.runtime', () => {
     expect(chrome.runtime.getManifest).toBeCalled()
   })
 
-  test('sendMessage with callback', () => {
-    const message = { greeting: 'hello?' }
-    const response = { greeting: 'here I am' }
+  test('getURL returns chrome-extension URL', () => {
+    const path = 'icons/icon32.png'
+    const result = chrome.runtime.getURL(path)
+
+    expect(result).toBe('chrome-extension://test-extension-id/icons/icon32.png')
+    expect(chrome.runtime.getURL).toHaveBeenCalledWith(path)
+  })
+
+  test('getURL handles different paths', () => {
+    expect(chrome.runtime.getURL('manifest.json')).toBe('chrome-extension://test-extension-id/manifest.json')
+    expect(chrome.runtime.getURL('')).toBe('chrome-extension://test-extension-id/')
+    expect(chrome.runtime.getURL('popup.html')).toBe('chrome-extension://test-extension-id/popup.html')
+  })
+
+  test('sendMessage supports both callback and promise modes', async () => {
+    const message = { greeting: 'hello' }
     const callbackSpy = vi.fn()
 
-    // @ts-expect-error - sendMessage is not a part of the chrome namespace
-    chrome.runtime.sendMessage.mockImplementation((message, callback) => {
-      callback(response)
-    })
-
+    // Test callback mode - should call callback asynchronously with undefined
     chrome.runtime.sendMessage(message, callbackSpy)
+    expect(chrome.runtime.sendMessage).toHaveBeenCalledWith(message, callbackSpy)
 
-    // @ts-expect-error - sendMessage is not a part of the chrome namespace
-    expect(chrome.runtime.sendMessage).toBeCalledWith(message, callbackSpy)
-    expect(callbackSpy).toBeCalledWith(response)
+    // Callback should be called asynchronously
+    await new Promise(process.nextTick)
+    expect(callbackSpy).toHaveBeenCalledWith(undefined)
+
+    // Test promise mode - should return resolved promise
+    const promise = chrome.runtime.sendMessage(message)
+    expect(promise).toBeInstanceOf(Promise)
+    await expect(promise).resolves.toBe(undefined)
   })
 
   test('onMessage event', () => {

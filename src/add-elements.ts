@@ -67,6 +67,33 @@ export const addFunction = (
   namespace: string,
 ) => {
   const unimplementedError = `${namespace}.${schema.name} is not implemented`
+
+  const FQFN = `${namespace}.${schema.name}`
+
+  if (FQFN === 'chrome.runtime.getURL') {
+    const fn = vi.fn((path: string) => {
+      return `chrome-extension://test-extension-id/${path}`
+    })
+    fn.clear = () => fn.mockClear()
+    Object.assign(target, { [schema.name]: fn })
+    return fn
+  }
+
+  if (FQFN === 'chrome.runtime.sendMessage' || FQFN === 'chrome.tabs.sendMessage') {
+    const fn = vi.fn((...args: any[]) => {
+      const callback = args.find((arg) => typeof arg === 'function')
+      if (callback) {
+        process.nextTick(() => callback(undefined))
+        return undefined
+      } else {
+        return Promise.resolve(undefined)
+      }
+    })
+    fn.clear = () => fn.mockClear()
+    Object.assign(target, { [schema.name]: fn })
+    return fn
+  }
+
   const fn = vi.fn((...args: any[]) => {
     if (schema.isPromise) {
       return Promise.reject(new Error(unimplementedError))
