@@ -1,0 +1,38 @@
+{
+  "name": "vitest-chrome-mv3",
+  "version": "0.1.0",
+  "description": "Test Chrome extensions with Vitest. A complete mock of the Chrome API with support for Manifest V3.",
+  "type": "module",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.esm.js",
+  "exports": {
+    ".": {
+      "import": "./lib/index.esm.js",
+      "require": "./lib/index.cjs.js"
+    }
+  },
+  "files": [
+    "lib",
+    "types"
+  ],
+  "types": "types/index.d.ts",
+  "scripts": {
+    "test": "vitest run",
+    "build:schema": "node scripts/generate-schema.js",
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "remark": "^14.0.2",
+    "unist-util-visit": "^4.1.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/node": "^14.0.5",
+    "rollup": "^2.79.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.1.6",
+    "vite": "^7.2.2",
+    "vitest": "^0.34.2"
+  }
+}

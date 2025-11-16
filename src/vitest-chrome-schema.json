@@ -1,0 +1,3972 @@
+{
+  "accessibilityFeatures": {
+    "functions": [],
+    "events": [],
+    "properties": []
+  },
+  "alarms": {
+    "functions": [
+      {
+        "name": "clear",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "name?",
+            "type": "string",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "clearAll",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "create",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "name?",
+            "type": "string",
+            "optional": true
+          },
+          {
+            "name": "alarmInfo",
+            "type": "AlarmCreateInfo",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "get",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "name?",
+            "type": "string",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getAll",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      }
+    ],
+    "events": [
+      {
+        "name": "onAlarm",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "audio": {
+    "functions": [
+      {
+        "name": "getDevices",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "filter?",
+            "type": "DeviceFilter",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getMute",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "streamType",
+            "type": "StreamType",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setActiveDevices",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "ids",
+            "type": "DeviceIdLists",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setMute",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "streamType",
+            "type": "StreamType",
+            "optional": false
+          },
+          {
+            "name": "isMuted",
+            "type": "boolean",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setProperties",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "properties",
+            "type": "DeviceProperties",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onDeviceListChanged",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onLevelChanged",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onMuteChanged",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "bookmarks": {
+    "functions": [
+      {
+        "name": "create",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "bookmark",
+            "type": "CreateDetails",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "get",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "idOrIdList",
+            "type": "string | [string",
+            "optional": false
+          },
+          {
+            "name": "...string[]]",
+            "type": "any",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getChildren",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getRecent",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "numberOfItems",
+            "type": "number",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getSubTree",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getTree",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "move",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "destination",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "remove",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeTree",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "search",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "query",
+            "type": "string | object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "update",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "changes",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onChanged",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onChildrenReordered",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onCreated",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onImportBegan",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onImportEnded",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onMoved",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onRemoved",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "browsingData": {
+    "functions": [
+      {
+        "name": "remove",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          },
+          {
+            "name": "dataToRemove",
+            "type": "DataTypeSet",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeAppcache",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeCache",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeCacheStorage",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeCookies",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeDownloads",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeFileSystems",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeFormData",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeHistory",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeIndexedDB",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeLocalStorage",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removePasswords",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removePluginData",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeServiceWorkers",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeWebSQL",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "RemovalOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "settings",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      }
+    ],
+    "events": [],
+    "properties": []
+  },
+  "contextMenus": {
+    "functions": [
+      {
+        "name": "create",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "createProperties",
+            "type": "CreateProperties",
+            "optional": false
+          },
+          {
+            "name": "callback?",
+            "type": "function",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "remove",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "menuItemId",
+            "type": "string | number",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeAll",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "update",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string | number",
+            "optional": false
+          },
+          {
+            "name": "updateProperties",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onClicked",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "cookies": {
+    "functions": [
+      {
+        "name": "get",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "CookieDetails",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getAll",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getAllCookieStores",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getPartitionKey",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "FrameDetails",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "remove",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "CookieDetails",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "set",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onChanged",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "declarativeContent": {
+    "functions": [],
+    "events": [],
+    "properties": []
+  },
+  "declarativeNetRequest": {
+    "functions": [
+      {
+        "name": "getAvailableStaticRuleCount",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getDisabledRuleIds",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "GetDisabledRuleIdsOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getDynamicRules",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "filter?",
+            "type": "GetRulesFilter",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getEnabledRulesets",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getMatchedRules",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "filter?",
+            "type": "MatchedRulesFilter",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getSessionRules",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "filter?",
+            "type": "GetRulesFilter",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "isRegexSupported",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "regexOptions",
+            "type": "RegexOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setExtensionActionOptions",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "ExtensionActionOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "testMatchOutcome",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "request",
+            "type": "TestMatchRequestDetails",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "updateDynamicRules",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "UpdateRuleOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "updateEnabledRulesets",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "UpdateRulesetOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "updateSessionRules",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "UpdateRuleOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "updateStaticRules",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "UpdateStaticRulesOptions",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onRuleMatchedDebug",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "desktopCapture": {
+    "functions": [
+      {
+        "name": "cancelChooseDesktopMedia",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "desktopMediaRequestId",
+            "type": "number",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "chooseDesktopMedia",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "sources",
+            "type": "DesktopCaptureSourceType[]",
+            "optional": false
+          },
+          {
+            "name": "targetTab?",
+            "type": "Tab",
+            "optional": true
+          },
+          {
+            "name": "callback",
+            "type": "function",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [],
+    "properties": []
+  },
+  "documentScan": {
+    "functions": [
+      {
+        "name": "cancelScan",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "job",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "closeScanner",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "scannerHandle",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getOptionGroups",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "scannerHandle",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getScannerList",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "filter",
+            "type": "DeviceFilter",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "openScanner",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "scannerId",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "readScanData",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "job",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "scan",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "ScanOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setOptions",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "scannerHandle",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "options",
+            "type": "OptionSetting[]",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "startScan",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "scannerHandle",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "options",
+            "type": "StartScanOptions",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [],
+    "properties": []
+  },
+  "events": {
+    "functions": [],
+    "events": [],
+    "properties": []
+  },
+  "extension": {
+    "functions": [
+      {
+        "name": "getBackgroundPage",
+        "type": "function",
+        "isPromise": false,
+        "parameters": []
+      },
+      {
+        "name": "getViews",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "fetchProperties?",
+            "type": "object",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "isAllowedFileSchemeAccess",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "isAllowedIncognitoAccess",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "setUpdateUrlData",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "data",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [],
+    "properties": []
+  },
+  "extensionTypes": {
+    "functions": [],
+    "events": [],
+    "properties": []
+  },
+  "fileBrowserHandler": {
+    "functions": [],
+    "events": [
+      {
+        "name": "onExecute",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "fontSettings": {
+    "functions": [
+      {
+        "name": "clearDefaultFixedFontSize",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details?",
+            "type": "object",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "clearDefaultFontSize",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details?",
+            "type": "object",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "clearFont",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "clearMinimumFontSize",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details?",
+            "type": "object",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getDefaultFixedFontSize",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details?",
+            "type": "object",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getDefaultFontSize",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details?",
+            "type": "object",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getFont",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getFontList",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getMinimumFontSize",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details?",
+            "type": "object",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "setDefaultFixedFontSize",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setDefaultFontSize",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setFont",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setMinimumFontSize",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onDefaultFixedFontSizeChanged",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onDefaultFontSizeChanged",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onFontChanged",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onMinimumFontSizeChanged",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "gcm": {
+    "functions": [
+      {
+        "name": "register",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "senderIds",
+            "type": "string[]",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "send",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "message",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "unregister",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      }
+    ],
+    "events": [
+      {
+        "name": "onMessage",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onMessagesDeleted",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onSendError",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "history": {
+    "functions": [
+      {
+        "name": "addUrl",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "UrlDetails",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "deleteAll",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "deleteRange",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "range",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "deleteUrl",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "UrlDetails",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getVisits",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "UrlDetails",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "search",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "query",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onVisited",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onVisitRemoved",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "i18n": {
+    "functions": [
+      {
+        "name": "detectLanguage",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "text",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getAcceptLanguages",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getMessage",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "messageName",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "substitutions?",
+            "type": "any",
+            "optional": true
+          },
+          {
+            "name": "options?",
+            "type": "object",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getUILanguage",
+        "type": "function",
+        "isPromise": false,
+        "parameters": []
+      }
+    ],
+    "events": [],
+    "properties": []
+  },
+  "identity": {
+    "functions": [
+      {
+        "name": "clearAllCachedAuthTokens",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getAccounts",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getAuthToken",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details?",
+            "type": "TokenDetails",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getProfileUserInfo",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details?",
+            "type": "ProfileDetails",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getRedirectURL",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "path?",
+            "type": "string",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "launchWebAuthFlow",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "WebAuthFlowDetails",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeCachedAuthToken",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "InvalidTokenDetails",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onSignInChanged",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "instanceID": {
+    "functions": [
+      {
+        "name": "deleteID",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "deleteToken",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "deleteTokenParams",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getCreationTime",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getID",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getToken",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "getTokenParams",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onTokenRefresh",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "loginState": {
+    "functions": [
+      {
+        "name": "getProfileType",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getSessionState",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      }
+    ],
+    "events": [
+      {
+        "name": "onSessionStateChanged",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "management": {
+    "functions": [
+      {
+        "name": "createAppShortcut",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "generateAppForLink",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "url",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "get",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getAll",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getPermissionWarningsById",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getPermissionWarningsByManifest",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "manifestStr",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getSelf",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "installReplacementWebApp",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "launchApp",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setEnabled",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "enabled",
+            "type": "boolean",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setLaunchType",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "launchType",
+            "type": "LaunchType",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "uninstall",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "options?",
+            "type": "UninstallOptions",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "uninstallSelf",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options?",
+            "type": "UninstallOptions",
+            "optional": true
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onDisabled",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onEnabled",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onInstalled",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onUninstalled",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "notifications": {
+    "functions": [
+      {
+        "name": "clear",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "notificationId",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "create",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "notificationId?",
+            "type": "string",
+            "optional": true
+          },
+          {
+            "name": "options",
+            "type": "NotificationOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getAll",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getPermissionLevel",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "update",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "notificationId",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "options",
+            "type": "NotificationOptions",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onButtonClicked",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onClicked",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onClosed",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onPermissionLevelChanged",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onShowSettings",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "offscreen": {
+    "functions": [
+      {
+        "name": "closeDocument",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "createDocument",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "parameters",
+            "type": "CreateParameters",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [],
+    "properties": []
+  },
+  "omnibox": {
+    "functions": [
+      {
+        "name": "setDefaultSuggestion",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "suggestion",
+            "type": "DefaultSuggestResult",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onDeleteSuggestion",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onInputCancelled",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onInputChanged",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onInputEntered",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onInputStarted",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "pageCapture": {
+    "functions": [
+      {
+        "name": "saveAsMHTML",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [],
+    "properties": []
+  },
+  "permissions": {
+    "functions": [
+      {
+        "name": "addHostAccessRequest",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "request",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "contains",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "permissions",
+            "type": "Permissions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getAll",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "remove",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "permissions",
+            "type": "Permissions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeHostAccessRequest",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "request",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "request",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "permissions",
+            "type": "Permissions",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onAdded",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onRemoved",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "platformKeys": {
+    "functions": [
+      {
+        "name": "getKeyPair",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "certificate",
+            "type": "ArrayBuffer",
+            "optional": false
+          },
+          {
+            "name": "parameters",
+            "type": "object",
+            "optional": false
+          },
+          {
+            "name": "callback",
+            "type": "function",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getKeyPairBySpki",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "publicKeySpkiDer",
+            "type": "ArrayBuffer",
+            "optional": false
+          },
+          {
+            "name": "parameters",
+            "type": "object",
+            "optional": false
+          },
+          {
+            "name": "callback",
+            "type": "function",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "selectClientCertificates",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "SelectDetails",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "subtleCrypto",
+        "type": "function",
+        "isPromise": false,
+        "parameters": []
+      },
+      {
+        "name": "verifyTLSServerCertificate",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "VerificationDetails",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [],
+    "properties": []
+  },
+  "power": {
+    "functions": [
+      {
+        "name": "releaseKeepAwake",
+        "type": "function",
+        "isPromise": false,
+        "parameters": []
+      },
+      {
+        "name": "reportActivity",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "requestKeepAwake",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "level",
+            "type": "Level",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [],
+    "properties": []
+  },
+  "printerProvider": {
+    "functions": [],
+    "events": [
+      {
+        "name": "onGetCapabilityRequested",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onGetPrintersRequested",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onGetUsbPrinterInfoRequested",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onPrintRequested",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "printing": {
+    "functions": [
+      {
+        "name": "cancelJob",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "jobId",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getJobStatus",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "jobId",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getPrinterInfo",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "printerId",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getPrinters",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "submitJob",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "request",
+            "type": "SubmitJobRequest",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onJobStatusChanged",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "printingMetrics": {
+    "functions": [
+      {
+        "name": "getPrintJobs",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      }
+    ],
+    "events": [
+      {
+        "name": "onPrintJobFinished",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "privacy": {
+    "functions": [],
+    "events": [],
+    "properties": []
+  },
+  "proxy": {
+    "functions": [],
+    "events": [
+      {
+        "name": "onProxyError",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "readingList": {
+    "functions": [
+      {
+        "name": "addEntry",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "entry",
+            "type": "AddEntryOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "query",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "info",
+            "type": "QueryInfo",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeEntry",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "info",
+            "type": "RemoveOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "updateEntry",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "info",
+            "type": "UpdateEntryOptions",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onEntryAdded",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onEntryRemoved",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onEntryUpdated",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "runtime": {
+    "functions": [
+      {
+        "name": "connect",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "extensionId?",
+            "type": "string",
+            "optional": true
+          },
+          {
+            "name": "connectInfo?",
+            "type": "object",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "connectNative",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "application",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getBackgroundPage",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getContexts",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "filter",
+            "type": "ContextFilter",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getManifest",
+        "type": "function",
+        "isPromise": false,
+        "parameters": []
+      },
+      {
+        "name": "getPackageDirectoryEntry",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getPlatformInfo",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getURL",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "path",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getVersion",
+        "type": "function",
+        "isPromise": false,
+        "parameters": []
+      },
+      {
+        "name": "openOptionsPage",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "reload",
+        "type": "function",
+        "isPromise": false,
+        "parameters": []
+      },
+      {
+        "name": "requestUpdateCheck",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "restart",
+        "type": "function",
+        "isPromise": false,
+        "parameters": []
+      },
+      {
+        "name": "restartAfterDelay",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "seconds",
+            "type": "number",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "sendMessage",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "extensionId?",
+            "type": "string",
+            "optional": true
+          },
+          {
+            "name": "message",
+            "type": "any",
+            "optional": false
+          },
+          {
+            "name": "options?",
+            "type": "object",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "sendNativeMessage",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "application",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "message",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setUninstallURL",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "url",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onBrowserUpdateAvailable",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onConnect",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onConnectExternal",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onConnectNative",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onInstalled",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onMessage",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onMessageExternal",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onRestartRequired",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onStartup",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onSuspend",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onSuspendCanceled",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onUpdateAvailable",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onUserScriptConnect",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onUserScriptMessage",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "scripting": {
+    "functions": [
+      {
+        "name": "executeScript",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "injection",
+            "type": "ScriptInjection",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getRegisteredContentScripts",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "filter?",
+            "type": "ContentScriptFilter",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "insertCSS",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "injection",
+            "type": "CSSInjection",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "registerContentScripts",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "scripts",
+            "type": "RegisteredContentScript[]",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "removeCSS",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "injection",
+            "type": "CSSInjection",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "unregisterContentScripts",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "filter?",
+            "type": "ContentScriptFilter",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "updateContentScripts",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "scripts",
+            "type": "RegisteredContentScript[]",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [],
+    "properties": []
+  },
+  "search": {
+    "functions": [
+      {
+        "name": "query",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "queryInfo",
+            "type": "QueryInfo",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [],
+    "properties": []
+  },
+  "sessions": {
+    "functions": [
+      {
+        "name": "getDevices",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "filter?",
+            "type": "Filter",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getRecentlyClosed",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "filter?",
+            "type": "Filter",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "restore",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "sessionId?",
+            "type": "string",
+            "optional": true
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onChanged",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "storage": {
+    "functions": [],
+    "events": [
+      {
+        "name": "onChanged",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "systemLog": {
+    "functions": [
+      {
+        "name": "add",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "MessageOptions",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [],
+    "properties": []
+  },
+  "tabCapture": {
+    "functions": [
+      {
+        "name": "capture",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "CaptureOptions",
+            "optional": false
+          },
+          {
+            "name": "callback",
+            "type": "function",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getCapturedTabs",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getMediaStreamId",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options?",
+            "type": "GetMediaStreamOptions",
+            "optional": true
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onStatusChanged",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "tabGroups": {
+    "functions": [
+      {
+        "name": "get",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "groupId",
+            "type": "number",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "move",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "groupId",
+            "type": "number",
+            "optional": false
+          },
+          {
+            "name": "moveProperties",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "query",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "queryInfo",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "update",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "groupId",
+            "type": "number",
+            "optional": false
+          },
+          {
+            "name": "updateProperties",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onCreated",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onMoved",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onRemoved",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onUpdated",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "tabs": {
+    "functions": [
+      {
+        "name": "captureVisibleTab",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "windowId?",
+            "type": "number",
+            "optional": true
+          },
+          {
+            "name": "options?",
+            "type": "ImageDetails",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "connect",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabId",
+            "type": "number",
+            "optional": false
+          },
+          {
+            "name": "connectInfo?",
+            "type": "object",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "create",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "createProperties",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "detectLanguage",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabId?",
+            "type": "number",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "discard",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabId?",
+            "type": "number",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "duplicate",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabId",
+            "type": "number",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "get",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabId",
+            "type": "number",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getCurrent",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getZoom",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabId?",
+            "type": "number",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getZoomSettings",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabId?",
+            "type": "number",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "goBack",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabId?",
+            "type": "number",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "goForward",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabId?",
+            "type": "number",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "group",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "highlight",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "highlightInfo",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "move",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabIds",
+            "type": "number | number[]",
+            "optional": false
+          },
+          {
+            "name": "moveProperties",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "query",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "queryInfo",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "reload",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabId?",
+            "type": "number",
+            "optional": true
+          },
+          {
+            "name": "reloadProperties?",
+            "type": "object",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "remove",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabIds",
+            "type": "number | number[]",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "sendMessage",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabId",
+            "type": "number",
+            "optional": false
+          },
+          {
+            "name": "message",
+            "type": "any",
+            "optional": false
+          },
+          {
+            "name": "options?",
+            "type": "object",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "setZoom",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabId?",
+            "type": "number",
+            "optional": true
+          },
+          {
+            "name": "zoomFactor",
+            "type": "number",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setZoomSettings",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabId?",
+            "type": "number",
+            "optional": true
+          },
+          {
+            "name": "zoomSettings",
+            "type": "ZoomSettings",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "ungroup",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabIds",
+            "type": "number | [number",
+            "optional": false
+          },
+          {
+            "name": "...number[]]",
+            "type": "any",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "update",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "tabId?",
+            "type": "number",
+            "optional": true
+          },
+          {
+            "name": "updateProperties",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onActivated",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onAttached",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onCreated",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onDetached",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onHighlighted",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onMoved",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onRemoved",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onReplaced",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onUpdated",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onZoomChange",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "topSites": {
+    "functions": [
+      {
+        "name": "get",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      }
+    ],
+    "events": [],
+    "properties": []
+  },
+  "tts": {
+    "functions": [
+      {
+        "name": "getVoices",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "isSpeaking",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "pause",
+        "type": "function",
+        "isPromise": false,
+        "parameters": []
+      },
+      {
+        "name": "resume",
+        "type": "function",
+        "isPromise": false,
+        "parameters": []
+      },
+      {
+        "name": "speak",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "utterance",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "options?",
+            "type": "TtsOptions",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "stop",
+        "type": "function",
+        "isPromise": false,
+        "parameters": []
+      }
+    ],
+    "events": [
+      {
+        "name": "onVoicesChanged",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "ttsEngine": {
+    "functions": [
+      {
+        "name": "updateLanguage",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "status",
+            "type": "LanguageStatus",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "updateVoices",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "voices",
+            "type": "TtsVoice[]",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onInstallLanguageRequest",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onLanguageStatusRequest",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onPause",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onResume",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onSpeak",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onSpeakWithAudioStream",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onStop",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onUninstallLanguageRequest",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "types": {
+    "functions": [],
+    "events": [],
+    "properties": []
+  },
+  "userScripts": {
+    "functions": [
+      {
+        "name": "configureWorld",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "properties",
+            "type": "WorldProperties",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "execute",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "injection",
+            "type": "UserScriptInjection",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getScripts",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "filter?",
+            "type": "UserScriptFilter",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getWorldConfigurations",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "register",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "scripts",
+            "type": "RegisteredUserScript[]",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "resetWorldConfiguration",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "worldId?",
+            "type": "string",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "unregister",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "filter?",
+            "type": "UserScriptFilter",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "update",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "scripts",
+            "type": "RegisteredUserScript[]",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [],
+    "properties": []
+  },
+  "vpnProvider": {
+    "functions": [
+      {
+        "name": "createConfig",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "name",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "destroyConfig",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "notifyConnectionStateChanged",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "state",
+            "type": "VpnConnectionState",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "sendPacket",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "data",
+            "type": "ArrayBuffer",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setParameters",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "parameters",
+            "type": "Parameters",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onConfigCreated",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onConfigRemoved",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onPacketReceived",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onPlatformMessage",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onUIEvent",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "webAuthenticationProxy": {
+    "functions": [
+      {
+        "name": "attach",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "completeCreateRequest",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "CreateResponseDetails",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "completeGetRequest",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "GetResponseDetails",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "completeIsUvpaaRequest",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "IsUvpaaResponseDetails",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "detach",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      }
+    ],
+    "events": [
+      {
+        "name": "onCreateRequest",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onGetRequest",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onIsUvpaaRequest",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onRemoteSessionStateChange",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onRequestCanceled",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "webNavigation": {
+    "functions": [
+      {
+        "name": "getAllFrames",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getFrame",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "details",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onBeforeNavigate",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onCommitted",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onCompleted",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onCreatedNavigationTarget",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onDOMContentLoaded",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onErrorOccurred",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onHistoryStateUpdated",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onReferenceFragmentUpdated",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onTabReplaced",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "webRequest": {
+    "functions": [
+      {
+        "name": "handlerBehaviorChanged",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      }
+    ],
+    "events": [
+      {
+        "name": "onActionIgnored",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onAuthRequired",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onBeforeRedirect",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onBeforeRequest",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onBeforeSendHeaders",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onCompleted",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onErrorOccurred",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onHeadersReceived",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onResponseStarted",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onSendHeaders",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
+  "windows": {
+    "functions": [
+      {
+        "name": "create",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "createData?",
+            "type": "object",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "get",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "windowId",
+            "type": "number",
+            "optional": false
+          },
+          {
+            "name": "queryOptions?",
+            "type": "QueryOptions",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getAll",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "queryOptions?",
+            "type": "QueryOptions",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getCurrent",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "queryOptions?",
+            "type": "QueryOptions",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "getLastFocused",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "queryOptions?",
+            "type": "QueryOptions",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "remove",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "windowId",
+            "type": "number",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "update",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "windowId",
+            "type": "number",
+            "optional": false
+          },
+          {
+            "name": "updateInfo",
+            "type": "object",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onBoundsChanged",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onCreated",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onFocusChanged",
+        "type": "event",
+        "parameters": []
+      },
+      {
+        "name": "onRemoved",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  }
+}
