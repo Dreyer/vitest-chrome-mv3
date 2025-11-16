@@ -1,4 +1,4 @@
-import { chrome } from '../src/index'
+import { chrome } from '../src/index';
 import { expect, test, vi } from 'vitest';
 
 test('promise-based function should return a promise', async () => {

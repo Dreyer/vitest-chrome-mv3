@@ -16,6 +16,7 @@ Guidelines for anyone (human or AI) acting on behalf of the `vitest-chrome-mv3` 
 - Node.js `24.11.0` (see `.tool-versions`), npm 10+, git, and a configured npm account with publish rights.
 - Install dependencies with `npm install` (CI uses `npm ci`).
 - Key scripts:
+  - `npm run format:check` and `npm run lint` – run on pre-commit or in CI.
   - `npm test` – runs the full Vitest suite (also used by `preversion`).
   - `npm run build` – bundles `src/` into `lib/` via Rollup (called during `prepublishOnly`).
   - `npm run build:docs` / `npm run build:schema` – refresh Chrome reference docs and regenerate the schema/types.
@@ -53,11 +54,14 @@ Guidelines for anyone (human or AI) acting on behalf of the `vitest-chrome-mv3` 
 - Keep commits focused; include regenerated artifacts and tests when schema or API coverage changes.
 - Do not store npm tokens or other secrets in the repo; rely on local environment or CI secrets.
 - When in doubt (unclear requirements, potential breaking change, CI instability), stop and request human guidance via an issue or PR comment.
+- Always prefer idiomatic approaches over hacky solutions. Consult authoritative documentation (e.g., Vitest, TypeScript) to follow best practices, especially when writing tests.
+- Consider the security implications of any changes, referencing OWASP Top 10 or other relevant security standards where applicable.
 
 ## Quick Checklist
 - [ ] Environment matches `.tool-versions`.
 - [ ] Dependencies installed (`npm install`).
 - [ ] Relevant docs/tests updated (`docs/`, `tests/`).
+- [ ] `npm run format:check` and `npm run lint` pass.
 - [ ] `npm test` (and `npm run build` when applicable) pass locally.
 - [ ] `docs/CHANGELOG.md` updated.
 - [ ] For releases: follow `docs/PUBLISHING.md` and confirm npm publish.

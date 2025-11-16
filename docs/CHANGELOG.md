@@ -3,6 +3,7 @@
 All notable changes to `vitest-chrome-mv3` will be documented here. Dates use `YYYY-MM-DD`. This file complements `docs/PUBLISHING.md`.
 
 ## Unreleased
+- Added ESLint and Prettier for automated code quality and formatting.
 - Placeholder for upcoming work. Move entries to a tagged release when publishing.
 
 ## 0.1.0 – 2025-11-16

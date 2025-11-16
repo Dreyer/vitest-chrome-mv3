@@ -1,6 +1,7 @@
-import { createEvent } from './create-event'
-import { Storage } from './vitest-chrome'
-import { Mock, vi } from 'vitest'
+import { Storage } from './vitest-chrome';
+import { vi } from 'vitest';
+import { SchemaMember } from './types';
+import { MockWithClear } from './types';
 
 /**
  * Namespace member data format from vitest-chrome-schema.json
@@ -8,155 +9,143 @@ import { Mock, vi } from 'vitest'
  * @interface SchemaData
  * @template T Type of namespace member
  */
-interface SchemaData<
-  T extends 'event' | 'function' | 'property'
-> {
-  name: string
-  type: T
-  isPromise?: boolean
-  deprecated: string | false
-  parameters: T extends 'event' | 'function'
-    ? {
-        name: string
-        optional: boolean
-        parameters: number
-        type: string
-      }[]
-    : never[]
-  value: T extends 'property' ? any : undefined
-}
 
-export const addEvent = (schema: any, target: object) => {
-  const event = (...args: any[]) => {
-    return event.callListeners(...args)
-  }
-  event.listeners = new Set<(...args: any[]) => void>()
+export const addEvent = (schema: SchemaMember, target: object) => {
+  const event = (...args: unknown[]) => {
+    return event.callListeners(...args);
+  };
+  event.listeners = new Set<(...args: unknown[]) => void>();
   event.addListener = vi.fn((listener) => {
-    event.listeners.add(listener)
-  })
+    event.listeners.add(listener);
+  });
   event.removeListener = vi.fn((listener) => {
-    event.listeners.delete(listener)
-  })
+    event.listeners.delete(listener);
+  });
   event.hasListener = vi.fn((listener) => {
-    return event.listeners.has(listener)
-  })
+    return event.listeners.has(listener);
+  });
   event.hasListeners = vi.fn(() => {
-    return event.listeners.size > 0
-  })
-  event.callListeners = vi.fn((...args: any[]) => {
+    return event.listeners.size > 0;
+  });
+  event.callListeners = vi.fn((...args: unknown[]) => {
     for (const listener of event.listeners) {
-      listener(...args)
+      listener(...args);
     }
-  })
+  });
   event.clear = () => {
-    event.listeners.clear()
-    event.addListener.mockClear()
-    event.removeListener.mockClear()
-    event.hasListener.mockClear()
-    event.hasListeners.mockClear()
-    event.callListeners.mockClear()
-  }
-  Object.assign(target, { [schema.name]: event })
-  return event
-}
+    event.listeners.clear();
+    event.addListener.mockClear();
+    event.removeListener.mockClear();
+    event.hasListener.mockClear();
+    event.hasListeners.mockClear();
+    event.callListeners.mockClear();
+  };
+  Object.assign(target, { [schema.name]: event });
+  return event;
+};
 
 export const addFunction = (
-  schema: any,
+  schema: SchemaMember,
   target: object,
   namespace: string,
 ) => {
-  const unimplementedError = `${namespace}.${schema.name} is not implemented`
+  const unimplementedError = `${namespace}.${schema.name} is not implemented`;
 
-  const FQFN = `${namespace}.${schema.name}`
+  const FQFN = `${namespace}.${schema.name}`;
 
   if (FQFN === 'chrome.runtime.getURL') {
     const fn = vi.fn((path: string) => {
-      return `chrome-extension://test-extension-id/${path}`
-    })
-    ;(fn as any).clear = () => fn.mockClear()
-    Object.assign(target, { [schema.name]: fn })
-    return fn
+      return `chrome-extension://test-extension-id/${path}`;
+    });
+    (fn as MockWithClear<[string], string>).clear = () => fn.mockClear();
+    Object.assign(target, { [schema.name]: fn });
+    return fn;
   }
 
-  if (FQFN === 'chrome.runtime.sendMessage' || FQFN === 'chrome.tabs.sendMessage') {
-    const fn = vi.fn((...args: any[]) => {
-      const callback = args.find((arg) => typeof arg === 'function')
+  if (
+    FQFN === 'chrome.runtime.sendMessage' ||
+    FQFN === 'chrome.tabs.sendMessage'
+  ) {
+    const fn = vi.fn((...args: unknown[]) => {
+      const callback = args.find((arg) => typeof arg === 'function');
       if (callback) {
-        process.nextTick(() => callback(undefined))
-        return undefined
+        process.nextTick(() => callback(undefined));
+        return undefined;
       } else {
-        return Promise.resolve(undefined)
+        return Promise.resolve(undefined);
       }
-    })
-    ;(fn as any).clear = () => fn.mockClear()
-    Object.assign(target, { [schema.name]: fn })
-    return fn
+    });
+    (fn as MockWithClear<unknown[], void | Promise<undefined>>).clear = () =>
+      fn.mockClear();
+    Object.assign(target, { [schema.name]: fn });
+    return fn;
   }
 
-  const fn = vi.fn((...args: any[]) => {
+  const fn = vi.fn((...args: unknown[]) => {
     if (schema.isPromise) {
-      return Promise.reject(new Error(unimplementedError))
+      return Promise.reject(new Error(unimplementedError));
     }
-    const callback = args.find((arg) => typeof arg === 'function')
+    const callback = args.find((arg) => typeof arg === 'function');
     if (callback) {
-      callback()
+      callback();
     }
-    throw new Error(unimplementedError)
-  })
-  ;(fn as any).clear = () => {
-    fn.mockClear()
-  }
-  Object.assign(target, { [schema.name]: fn })
-  return fn
-}
+    throw new Error(unimplementedError);
+  });
+  (fn as MockWithClear<unknown[], unknown>).clear = () => {
+    fn.mockClear();
+  };
+  Object.assign(target, { [schema.name]: fn });
+  return fn;
+};
 
-export const addProperty = (schema: any, target: object) => {
+export const addProperty = (schema: SchemaMember, target: object) => {
   if (schema.name === 'storage') {
     const storage = {
       local: addStorageArea(),
       sync: addStorageArea(),
       managed: addStorageArea(),
-      onChanged: addEvent({ name: 'onChanged' }, {}),
-    }
-    Object.assign(target, { [schema.name]: storage })
-    return storage
+      onChanged: addEvent({ name: 'onChanged', type: 'event' }, {}),
+    };
+    Object.assign(target, { [schema.name]: storage });
+    return storage;
   }
 
-  let prop: any
+  let prop: unknown;
   Object.defineProperty(target, schema.name, {
     get() {
-      return prop
+      return prop;
     },
     set(value) {
-      prop = value
+      prop = value;
     },
-  })
+  });
   // TODO: find a way to clear property value
-  return prop
-}
+  return prop;
+};
 
 export function addStorageArea(): Storage.StorageArea {
-  const area = {
+  const area: Storage.StorageArea = {
     clear: vi.fn(),
     get: vi.fn(),
     getBytesInUse: vi.fn(),
     remove: vi.fn(),
-    set: vi.fn((...args: any[]) => {
-      const callback = args.find((arg) => typeof arg === 'function')
+    set: vi.fn((...args: unknown[]) => {
+      const callback = args.find((arg) => typeof arg === 'function');
       if (callback) {
-        callback()
+        callback();
       }
     }),
-  }
+    clearAll: () => {},
+  };
 
   // Add clear method to reset all mocks (separate from the clear function)
-  ;(area as any).clearAll = () => {
-    area.clear.mockClear()
-    area.get.mockClear()
-    area.getBytesInUse.mockClear()
-    area.remove.mockClear()
-    area.set.mockClear()
-  }
+  area.clearAll = () => {
+    area.clear.mockClear();
+    area.get.mockClear();
+    area.getBytesInUse.mockClear();
+    area.remove.mockClear();
+    area.set.mockClear();
+  };
 
-  return area
+  return area;
 }

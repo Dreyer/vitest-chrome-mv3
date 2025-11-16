@@ -2,10 +2,20 @@
 // once the schema generation script is complete.
 
 export namespace Storage {
-  export interface StorageArea {}
+  export interface StorageArea {
+    clear: Mock<[], void>;
+    get: Mock<
+      [keys?: string | string[] | { [key: string]: unknown } | null],
+      Promise<{ [key: string]: unknown }>
+    >;
+    getBytesInUse: Mock<[keys?: string | string[] | null], Promise<number>>;
+    remove: Mock<[keys: string | string[]], Promise<void>>;
+    set: Mock<[{ [key: string]: unknown }], Promise<void>>;
+    clearAll: () => void;
+  }
 }
 
-export type VitestChrome = typeof chrome
+export type VitestChrome = typeof chrome;
 
 export namespace Runtime {
   export interface MockServiceWorker {
@@ -14,6 +24,3 @@ export namespace Runtime {
     triggerOnInstalled: (details: chrome.runtime.InstalledDetails) => void;
   }
 }
-
-// in chrome.runtime definition
-mockServiceWorker: Runtime.MockServiceWorker;

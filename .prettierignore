@@ -1,0 +1,5 @@
+# Ignore artifacts:
+dist
+lib
+# Ignore vendored scripts:
+scripts/chrome-api-docs

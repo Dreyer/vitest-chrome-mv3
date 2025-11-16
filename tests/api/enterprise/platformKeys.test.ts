@@ -1,37 +1,37 @@
-import { chrome } from '../../../src/index'
-import { describe, test, expect } from 'vitest'
+import { chrome } from '../../../src/index';
+import { describe, test, expect } from 'vitest';
 
 describe('chrome.enterprise.platformKeys', () => {
   test('namespace exists', () => {
-    expect(chrome.enterprise.platformKeys).toBeDefined()
-    expect(typeof chrome.enterprise.platformKeys).toBe('object')
-  })
+    expect(chrome.enterprise.platformKeys).toBeDefined();
+    expect(typeof chrome.enterprise.platformKeys).toBe('object');
+  });
 
   test('challengeKey method exists', () => {
-    expect(chrome.enterprise.platformKeys.challengeKey).toBeDefined()
-  })
+    expect(chrome.enterprise.platformKeys.challengeKey).toBeDefined();
+  });
 
   test('challengeMachineKey method exists', () => {
-    expect(chrome.enterprise.platformKeys.challengeMachineKey).toBeDefined()
-  })
+    expect(chrome.enterprise.platformKeys.challengeMachineKey).toBeDefined();
+  });
 
   test('challengeUserKey method exists', () => {
-    expect(chrome.enterprise.platformKeys.challengeUserKey).toBeDefined()
-  })
+    expect(chrome.enterprise.platformKeys.challengeUserKey).toBeDefined();
+  });
 
   test('getCertificates method exists', () => {
-    expect(chrome.enterprise.platformKeys.getCertificates).toBeDefined()
-  })
+    expect(chrome.enterprise.platformKeys.getCertificates).toBeDefined();
+  });
 
   test('getTokens method exists', () => {
-    expect(chrome.enterprise.platformKeys.getTokens).toBeDefined()
-  })
+    expect(chrome.enterprise.platformKeys.getTokens).toBeDefined();
+  });
 
   test('importCertificate method exists', () => {
-    expect(chrome.enterprise.platformKeys.importCertificate).toBeDefined()
-  })
+    expect(chrome.enterprise.platformKeys.importCertificate).toBeDefined();
+  });
 
   test('removeCertificate method exists', () => {
-    expect(chrome.enterprise.platformKeys.removeCertificate).toBeDefined()
-  })
-})
+    expect(chrome.enterprise.platformKeys.removeCertificate).toBeDefined();
+  });
+});

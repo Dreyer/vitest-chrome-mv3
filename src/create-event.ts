@@ -1,14 +1,14 @@
 export interface EventCallback {
-  (...args: any[]): void
+  (...args: unknown[]): void;
 }
 export interface EventSelector<C extends EventCallback> {
-  (...args: any[]): Parameters<C>
+  (...args: unknown[]): Parameters<C>;
 }
 export interface MonotypeEventSelector<C extends EventCallback> {
-  (...args: Parameters<C>): Parameters<C>
+  (...args: Parameters<C>): Parameters<C>;
 }
 export interface OptionsSelector {
-  (...options: any[]): any[]
+  (...options: unknown[]): unknown[];
 }
 
 /** An object which allows the addition, removal, and invocation of listener functions. */
@@ -19,50 +19,50 @@ type CoreEvent<C extends EventCallback> = {
    * The callback parameter should be a function that looks like this:
    * function() {...};
    */
-  addListener(callback: C): void
+  addListener(callback: C): void;
   /**
    * @param callback Listener whose registration status shall be tested.
    */
-  hasListener(callback: C): boolean
-  hasListeners(): boolean
+  hasListener(callback: C): boolean;
+  hasListeners(): boolean;
   /**
    * Deregisters an event listener callback from an event.
    * @param callback Listener that shall be unregistered.
    * The callback parameter should be a function that looks like this:
    * function() {...};
    */
-  removeListener(callback: C): void
-}
+  removeListener(callback: C): void;
+};
 
 type Callable<
   C extends EventCallback,
-  R extends MonotypeEventSelector<C> | EventSelector<C>
+  R extends MonotypeEventSelector<C> | EventSelector<C>,
 > = {
   /**
    * Calls all listeners with a data argument.
    */
-  callListeners: (...args: Parameters<R>) => void
+  callListeners: (...args: Parameters<R>) => void;
 
   /**
    * Remove all listeners
    */
-  clearListeners(): void
+  clearListeners(): void;
 
   /**
    * Get the listener Set
    */
-  getListeners(): Set<C>
+  getListeners(): Set<C>;
 
   /**
    * Returns CallableEvent without callListeners
    */
-  toEvent(): CoreEvent<C>
-}
+  toEvent(): CoreEvent<C>;
+};
 
 export type CallableEvent<
   C extends EventCallback,
-  R extends MonotypeEventSelector<C> | EventSelector<C>
-> = CoreEvent<C> & Callable<C, R>
+  R extends MonotypeEventSelector<C> | EventSelector<C>,
+> = CoreEvent<C> & Callable<C, R>;
 
 export const createEvent = <C extends EventCallback>(
   // Use to map the arguments for Event#callListeners
@@ -71,11 +71,11 @@ export const createEvent = <C extends EventCallback>(
   validator?: OptionsSelector,
 ) => {
   if (validator) {
-    return createMapEvent(selector, validator)
+    return createMapEvent(selector, validator);
   } else {
-    return createSetEvent(selector)
+    return createSetEvent(selector);
   }
-}
+};
 
 /**
  * Create an event that takes a single callback as an argument
@@ -88,9 +88,9 @@ export const createEvent = <C extends EventCallback>(
  */
 export function createSetEvent<
   C extends EventCallback,
-  R extends EventSelector<C> | MonotypeEventSelector<C>
+  R extends EventSelector<C> | MonotypeEventSelector<C>,
 >(selector: R): CallableEvent<C, R> {
-  const _cbs = new Set<C>()
+  const _cbs = new Set<C>();
 
   return {
     addListener,
@@ -106,38 +106,38 @@ export function createSetEvent<
         hasListener,
         hasListeners,
         removeListener,
-      }
+      };
     },
-  }
+  };
 
   function addListener(cb: C) {
-    _cbs.add(cb)
+    _cbs.add(cb);
   }
   function hasListener(cb: C) {
-    return _cbs.has(cb)
+    return _cbs.has(cb);
   }
   function hasListeners() {
-    return _cbs.size > 0
+    return _cbs.size > 0;
   }
   function callListeners(...args: Parameters<R>) {
     // eslint-disable-next-line
     // @ts-ignore
-    const cbArgs = selector(...args)
+    const cbArgs = selector(...args);
 
     if (cbArgs) {
       _cbs.forEach((cb) => {
-        cb(...cbArgs)
-      })
+        cb(...cbArgs);
+      });
     }
   }
   function removeListener(cb: C) {
-    _cbs.delete(cb)
+    _cbs.delete(cb);
   }
   function clearListeners() {
-    _cbs.clear()
+    _cbs.clear();
   }
   function getListeners() {
-    return new Set(_cbs.values())
+    return new Set(_cbs.values());
   }
 }
 
@@ -155,9 +155,9 @@ export function createSetEvent<
 export function createMapEvent<
   C extends EventCallback,
   E extends EventSelector<C> | MonotypeEventSelector<C>,
-  O extends OptionsSelector
+  O extends OptionsSelector,
 >(eventSelector: E, optionsSelector?: O): CallableEvent<C, E> {
-  const _cbs: Map<C, any[]> = new Map()
+  const _cbs: Map<C, unknown[]> = new Map();
 
   return {
     addListener,
@@ -173,42 +173,41 @@ export function createMapEvent<
         hasListener,
         hasListeners,
         removeListener,
-      }
+      };
     },
-  }
+  };
 
-  function addListener(cb: C, ...options: any[]) {
+  function addListener(cb: C, ...options: unknown[]) {
     const _options =
-      (typeof optionsSelector === 'function' &&
-        optionsSelector(...options)) ||
-      options
+      (typeof optionsSelector === 'function' && optionsSelector(...options)) ||
+      options;
 
-    _cbs.set(cb, _options)
+    _cbs.set(cb, _options);
   }
   function hasListener(cb: C) {
-    return _cbs.has(cb)
+    return _cbs.has(cb);
   }
   function hasListeners() {
-    return _cbs.size > 0
+    return _cbs.size > 0;
   }
-  function callListeners(...args: any[]) {
+  function callListeners(...args: unknown[]) {
     _cbs.forEach((options, cb) => {
       // eslint-disable-next-line
       // @ts-ignore
-      const cbArgs = eventSelector(...options, ...args)
+      const cbArgs = eventSelector(...options, ...args);
 
       if (cbArgs) {
-        cb(...cbArgs)
+        cb(...cbArgs);
       }
-    })
+    });
   }
   function removeListener(cb: C) {
-    _cbs.delete(cb)
+    _cbs.delete(cb);
   }
   function clearListeners() {
-    _cbs.clear()
+    _cbs.clear();
   }
   function getListeners() {
-    return new Set(_cbs.keys())
+    return new Set(_cbs.keys());
   }
 }
