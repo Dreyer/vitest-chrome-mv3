@@ -884,6 +884,158 @@
     "events": [],
     "properties": []
   },
+  "devtools": {
+    "functions": [],
+    "events": [],
+    "properties": [],
+    "inspectedWindow": {
+      "functions": [
+        {
+          "name": "eval",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "expression",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "options?",
+              "type": "object",
+              "optional": true
+            },
+            {
+              "name": "callback?",
+              "type": "function",
+              "optional": true
+            }
+          ]
+        },
+        {
+          "name": "getResources",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "callback",
+              "type": "function",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "reload",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "reloadOptions?",
+              "type": "object",
+              "optional": true
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "onResourceAdded",
+          "type": "event",
+          "parameters": []
+        },
+        {
+          "name": "onResourceContentCommitted",
+          "type": "event",
+          "parameters": []
+        }
+      ],
+      "properties": []
+    },
+    "panels": {
+      "functions": [
+        {
+          "name": "create",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "iconPath",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "pagePath",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "callback?",
+              "type": "function",
+              "optional": true
+            }
+          ]
+        },
+        {
+          "name": "openResource",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "url",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "lineNumber",
+              "type": "number",
+              "optional": false
+            },
+            {
+              "name": "columnNumber?",
+              "type": "number",
+              "optional": true
+            },
+            {
+              "name": "callback?",
+              "type": "function",
+              "optional": true
+            }
+          ]
+        },
+        {
+          "name": "setOpenResourceHandler",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "callback?",
+              "type": "function",
+              "optional": true
+            }
+          ]
+        },
+        {
+          "name": "setThemeChangeHandler",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "callback?",
+              "type": "function",
+              "optional": true
+            }
+          ]
+        }
+      ],
+      "events": [],
+      "properties": []
+    }
+  },
   "documentScan": {
     "functions": [
       {
@@ -1007,6 +1159,163 @@
     ],
     "events": [],
     "properties": []
+  },
+  "enterprise": {
+    "functions": [],
+    "events": [],
+    "properties": [],
+    "deviceAttributes": {
+      "functions": [
+        {
+          "name": "getDeviceAnnotatedLocation",
+          "type": "function",
+          "isPromise": true,
+          "parameters": []
+        },
+        {
+          "name": "getDeviceAssetId",
+          "type": "function",
+          "isPromise": true,
+          "parameters": []
+        },
+        {
+          "name": "getDeviceHostname",
+          "type": "function",
+          "isPromise": true,
+          "parameters": []
+        },
+        {
+          "name": "getDeviceSerialNumber",
+          "type": "function",
+          "isPromise": true,
+          "parameters": []
+        },
+        {
+          "name": "getDirectoryDeviceId",
+          "type": "function",
+          "isPromise": true,
+          "parameters": []
+        }
+      ],
+      "events": [],
+      "properties": []
+    },
+    "networkingAttributes": {
+      "functions": [
+        {
+          "name": "getNetworkDetails",
+          "type": "function",
+          "isPromise": true,
+          "parameters": []
+        }
+      ],
+      "events": [],
+      "properties": []
+    },
+    "platformKeys": {
+      "functions": [
+        {
+          "name": "challengeKey",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "options",
+              "type": "ChallengeKeyOptions",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "challengeMachineKey",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "challenge",
+              "type": "ArrayBuffer",
+              "optional": false
+            },
+            {
+              "name": "registerKey?",
+              "type": "boolean",
+              "optional": true
+            }
+          ]
+        },
+        {
+          "name": "challengeUserKey",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "challenge",
+              "type": "ArrayBuffer",
+              "optional": false
+            },
+            {
+              "name": "registerKey",
+              "type": "boolean",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "getCertificates",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "tokenId",
+              "type": "string",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "getTokens",
+          "type": "function",
+          "isPromise": true,
+          "parameters": []
+        },
+        {
+          "name": "importCertificate",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "tokenId",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "certificate",
+              "type": "ArrayBuffer",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "removeCertificate",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "tokenId",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "certificate",
+              "type": "ArrayBuffer",
+              "optional": false
+            }
+          ]
+        }
+      ],
+      "events": [],
+      "properties": []
+    }
   },
   "events": {
     "functions": [],
@@ -1524,6 +1833,240 @@
       }
     ],
     "properties": []
+  },
+  "input": {
+    "functions": [],
+    "events": [],
+    "properties": [],
+    "ime": {
+      "functions": [
+        {
+          "name": "clearComposition",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "object",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "commitText",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "object",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "deleteSurroundingText",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "object",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "hideInputView",
+          "type": "function",
+          "isPromise": false,
+          "parameters": []
+        },
+        {
+          "name": "keyEventHandled",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "requestId",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "response",
+              "type": "boolean",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "sendKeyEvents",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "object",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "setAssistiveWindowButtonHighlighted",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "object",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "setAssistiveWindowProperties",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "object",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "setCandidates",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "object",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "setCandidateWindowProperties",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "object",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "setComposition",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "object",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "setCursorPosition",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "object",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "setMenuItems",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "MenuParameters",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "updateMenuItems",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "parameters",
+              "type": "MenuParameters",
+              "optional": false
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "onActivate",
+          "type": "event",
+          "parameters": []
+        },
+        {
+          "name": "onAssistiveWindowButtonClicked",
+          "type": "event",
+          "parameters": []
+        },
+        {
+          "name": "onBlur",
+          "type": "event",
+          "parameters": []
+        },
+        {
+          "name": "onCandidateClicked",
+          "type": "event",
+          "parameters": []
+        },
+        {
+          "name": "onDeactivated",
+          "type": "event",
+          "parameters": []
+        },
+        {
+          "name": "onFocus",
+          "type": "event",
+          "parameters": []
+        },
+        {
+          "name": "onInputContextUpdate",
+          "type": "event",
+          "parameters": []
+        },
+        {
+          "name": "onKeyEvent",
+          "type": "event",
+          "parameters": []
+        },
+        {
+          "name": "onMenuItemActivated",
+          "type": "event",
+          "parameters": []
+        },
+        {
+          "name": "onReset",
+          "type": "event",
+          "parameters": []
+        },
+        {
+          "name": "onSurroundingTextChanged",
+          "type": "event",
+          "parameters": []
+        }
+      ],
+      "properties": []
+    }
   },
   "instanceID": {
     "functions": [
@@ -2756,6 +3299,78 @@
     ],
     "properties": []
   },
+  "sidePanel": {
+    "functions": [
+      {
+        "name": "getLayout",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "getOptions",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "GetPanelOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "getPanelBehavior",
+        "type": "function",
+        "isPromise": true,
+        "parameters": []
+      },
+      {
+        "name": "open",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "OpenOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setOptions",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "PanelOptions",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "setPanelBehavior",
+        "type": "function",
+        "isPromise": false,
+        "parameters": [
+          {
+            "name": "behavior",
+            "type": "PanelBehavior",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onOpened",
+        "type": "event",
+        "parameters": []
+      }
+    ],
+    "properties": []
+  },
   "storage": {
     "functions": [],
     "events": [
@@ -2766,6 +3381,259 @@
       }
     ],
     "properties": []
+  },
+  "system": {
+    "functions": [],
+    "events": [],
+    "properties": [],
+    "cpu": {
+      "functions": [
+        {
+          "name": "getInfo",
+          "type": "function",
+          "isPromise": true,
+          "parameters": []
+        }
+      ],
+      "events": [],
+      "properties": []
+    },
+    "display": {
+      "functions": [
+        {
+          "name": "clearTouchCalibration",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "completeCustomTouchCalibration",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "pairs",
+              "type": "TouchCalibrationPairQuad",
+              "optional": false
+            },
+            {
+              "name": "bounds",
+              "type": "Bounds",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "enableUnifiedDesktop",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "enabled",
+              "type": "boolean",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "getDisplayLayout",
+          "type": "function",
+          "isPromise": true,
+          "parameters": []
+        },
+        {
+          "name": "getInfo",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "flags?",
+              "type": "GetInfoFlags",
+              "optional": true
+            }
+          ]
+        },
+        {
+          "name": "overscanCalibrationAdjust",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "delta",
+              "type": "Insets",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "overscanCalibrationComplete",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "overscanCalibrationReset",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "overscanCalibrationStart",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "setDisplayLayout",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "layouts",
+              "type": "DisplayLayout[]",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "setDisplayProperties",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "info",
+              "type": "DisplayProperties",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "setMirrorMode",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "info",
+              "type": "MirrorModeInfo",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "showNativeTouchCalibration",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "startCustomTouchCalibration",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "name": "onDisplayChanged",
+          "type": "event",
+          "parameters": []
+        }
+      ],
+      "properties": []
+    },
+    "storage": {
+      "functions": [
+        {
+          "name": "ejectDevice",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "getAvailableCapacity",
+          "type": "function",
+          "isPromise": false,
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            }
+          ]
+        },
+        {
+          "name": "getInfo",
+          "type": "function",
+          "isPromise": true,
+          "parameters": []
+        }
+      ],
+      "events": [
+        {
+          "name": "onAttached",
+          "type": "event",
+          "parameters": []
+        },
+        {
+          "name": "onDetached",
+          "type": "event",
+          "parameters": []
+        }
+      ],
+      "properties": []
+    }
   },
   "systemLog": {
     "functions": [

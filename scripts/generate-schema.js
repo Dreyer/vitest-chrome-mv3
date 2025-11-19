@@ -4,7 +4,7 @@ import { remark } from 'remark';
 import { visit } from 'unist-util-visit';
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
-const referenceApiDir = path.resolve(__dirname, '../chrome/reference_api');
+const referenceApiDir = path.resolve(__dirname, '../docs/chrome_extensions_reference');
 const schemaOutputPath = path.resolve(
   __dirname,
   '../src/vitest-chrome-schema.json',
@@ -39,10 +39,11 @@ function parseSection(ast, sectionName) {
 }
 
 function parseMethod(signature) {
-  const match = signature.match(/chrome\.(\w+)\.(\w+)\(([^)]*)\)/);
+  // Match nested namespaces like chrome.system.display.getInfo or chrome.runtime.getURL
+  const match = signature.match(/chrome\.([\w.]+)\.(\w+)\(([^)]*)\)/);
   if (!match) return null;
 
-  const [, namespace, name, paramsString] = match;
+  const [, namespacePath, name, paramsString] = match;
   const returnsMatch = signature.match(/:\s*(Promise<.*>|.*)/);
   const returns = returnsMatch ? returnsMatch[1].trim() : 'void';
 
@@ -64,10 +65,11 @@ function parseMethod(signature) {
 }
 
 function parseEvent(signature) {
-  const match = signature.match(/chrome\.(\w+)\.(\w+)\.addListener/);
+  // Match nested namespaces like chrome.system.display.onDisplayChanged
+  const match = signature.match(/chrome\.([\w.]+)\.(\w+)\.addListener/);
   if (!match) return null;
 
-  const [, namespace, name] = match;
+  const [, namespacePath, name] = match;
 
   return {
     name,
@@ -87,43 +89,106 @@ function parseProperty(propString) {
   };
 }
 
-async function generateSchema() {
-  const apiSchema = {};
-  const files = await fs.promises.readdir(referenceApiDir);
+/**
+ * Recursively get all markdown files from a directory
+ */
+async function getAllMarkdownFiles(dir, fileList = []) {
+  const files = await fs.promises.readdir(dir, { withFileTypes: true });
 
   for (const file of files) {
-    if (
-      path.extname(file) !== '.md' ||
-      file === 'index.md' ||
-      file === 'README.md'
-    ) {
-      continue;
-    }
+    const filePath = path.join(dir, file.name);
 
-    const markdown = await fs.promises.readFile(
-      path.join(referenceApiDir, file),
-      'utf-8',
-    );
+    if (file.isDirectory()) {
+      await getAllMarkdownFiles(filePath, fileList);
+    } else if (
+      file.isFile() &&
+      path.extname(file.name) === '.md' &&
+      file.name !== 'index.md' &&
+      file.name !== 'README.md'
+    ) {
+      fileList.push(filePath);
+    }
+  }
+
+  return fileList;
+}
+
+/**
+ * Set a nested property on an object using a dot-separated path
+ */
+function setNestedProperty(obj, path, value) {
+  const parts = path.split('.');
+  let current = obj;
+
+  for (let i = 0; i < parts.length - 1; i++) {
+    const part = parts[i];
+    if (!current[part] || typeof current[part] !== 'object') {
+      current[part] = {
+        functions: [],
+        events: [],
+        properties: [],
+      };
+    }
+    current = current[part];
+  }
+
+  const lastPart = parts[parts.length - 1];
+  if (!current[lastPart] || typeof current[lastPart] !== 'object') {
+    current[lastPart] = {
+      functions: [],
+      events: [],
+      properties: [],
+    };
+  }
+
+  // Merge the new data with existing
+  const existing = current[lastPart];
+  existing.functions.push(...value.functions);
+  existing.events.push(...value.events);
+  existing.properties.push(...value.properties);
+}
+
+async function generateSchema() {
+  const apiSchema = {};
+  const files = await getAllMarkdownFiles(referenceApiDir);
+
+  for (const filePath of files) {
+    const markdown = await fs.promises.readFile(filePath, 'utf-8');
     const ast = remark.parse(markdown);
 
-    let namespace = '';
+    let namespacePath = '';
+
+    // First try to find namespace in H1 heading
     visit(ast, 'heading', (node) => {
       if (node.depth === 1) {
         const child = node.children[0];
         if (
           (child.type === 'text' || child.type === 'inlineCode') &&
-          child.value.includes('.')
+          child.value.includes('chrome.')
         ) {
-          namespace = child.value.split('.')[1];
+          // Extract full namespace path (e.g., "system.display" from "chrome.system.display")
+          const match = child.value.match(/chrome\.([\w.]+)/);
+          if (match) {
+            namespacePath = match[1];
+          }
         }
       }
     });
 
-    if (!namespace) {
+    // If not found in H1, search entire markdown content for chrome.X pattern
+    if (!namespacePath) {
+      const markdownText = markdown.substring(0, 2000); // Check first 2000 chars
+      const match = markdownText.match(/chrome\.([\w.]+)/);
+      if (match) {
+        namespacePath = match[1];
+      }
+    }
+
+    if (!namespacePath) {
       continue;
     }
 
-    apiSchema[namespace] = {
+    const namespaceData = {
       functions: parseSection(ast, 'Methods').map(parseMethod).filter(Boolean),
       events: parseSection(ast, 'Events').map(parseEvent).filter(Boolean),
       properties: parseSection(ast, 'Properties')
@@ -136,6 +201,8 @@ async function generateSchema() {
         .map((prop) => ({ name: prop, type: 'property', value: null }))
         .filter((p) => p.name),
     };
+
+    setNestedProperty(apiSchema, namespacePath, namespaceData);
   }
 
   await fs.promises.writeFile(

@@ -9,6 +9,10 @@ Test Chrome extensions with Vitest by using a complete, schema-driven mock of th
 - Includes helpers for simulating the service-worker lifecycle (`chrome.runtime.mockServiceWorker`) and clearing mocks between tests (`chrome.reset()`).
 - Ships TypeScript types so your editor understands the mocked surface area out of the box.
 
+## Breaking Changes
+
+**As of v1.0.0+**: This library no longer supports "phantom properties" - APIs that don't exist in the official Chrome documentation. If you access a property that isn't in the schema (e.g., `chrome.nonExistent.method()`), it will return `undefined` instead of creating a mock on-the-fly. This ensures tests fail when typos occur and keeps the mock surface area aligned with the real Chrome API.
+
 ## Requirements
 
 - Node.js 18+ (needed for the build scripts that depend on `fetch`).
@@ -102,11 +106,13 @@ expect(data.featureFlag).toBe(true)
 
 | Path | Purpose |
 | --- | --- |
-| `src/` | Source of the Chrome proxy, schema loader, and helpers such as `createHandler`. |
+| `src/` | Source code including utilities, manual overrides, and the generated Chrome mock. |
+| `src/generated.ts` | **AUTO-GENERATED** - Do not edit manually. Generated from the schema by `npm run build:mock`. |
+| `src/vitest-chrome-schema.json` | **GENERATED** - Structured JSON representation of Chrome APIs. Generated from markdown docs by `npm run build:schema`, used by `npm run build:mock` to create the mock code. Serves as intermediate artifact for debugging and version control. |
 | `tests/` | Vitest suites that exercise every namespace plus integration helpers (`vitest.setup.ts`). |
 | `lib/` | Rollup output that gets published to npm. |
 | `docs/chrome_extensions_reference/` | Snapshot of the official Chrome reference used when generating the schema. |
-| `scripts/` | Tooling for downloading docs and building the schema (`download-api-docs.js`, `generate-schema.js`). |
+| `scripts/` | Tooling for downloading docs, building the schema, and generating the mock (`download-api-docs.js`, `generate-schema.js`, `generate-mock.js`). |
 | `tmp/` | Scratch copies of upstream libraries used for comparison during development. |
 
 ## Development workflow
@@ -114,6 +120,7 @@ expect(data.featureFlag).toBe(true)
 | Command | Description |
 | --- | --- |
 | `npm install` | Install dependencies before doing anything else. |
+| `npm run build:mock` | Generate `src/generated.ts` from `src/vitest-chrome-schema.json`. Run this after updating the schema. |
 | `npm run build` | Bundle `src/` into `lib/` via Rollup. |
 | `npm test` | Run the Vitest suite once (CI mode). Use `npx vitest --watch` while iterating. |
 | `npm run build:docs` | Download the latest Chrome extension reference Markdown files. |
@@ -123,10 +130,13 @@ expect(data.featureFlag).toBe(true)
 
 1. Run `npm run build:docs` to refresh the Markdown reference files inside `docs/chrome_extensions_reference/`.
 2. Regenerate the schema with `npm run build:schema`. This parses the docs and updates `src/vitest-chrome-schema.json` plus any derived d.ts files.
-3. Re-run `npm test` to ensure the new data did not introduce regressions.
-4. Commit the updated docs, schema, and relevant tests together.
+3. **Generate the mock code** with `npm run build:mock`. This creates `src/generated.ts` from the updated schema.
+4. Re-run `npm test` to ensure the new data did not introduce regressions.
+5. Commit the updated docs, schema, generated code, and relevant tests together.
 
 Keeping the schema current ensures newly released APIs are mocked automatically without manual coding.
+
+**Note:** `src/generated.ts` is an auto-generated file. Do not edit it manually. Always regenerate it with `npm run build:mock` after updating the schema.
 
 ## Contributing
 

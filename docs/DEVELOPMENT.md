@@ -42,9 +42,10 @@ This document explains how to get a local environment ready, run the test suite,
 
 | Path | Purpose |
 | --- | --- |
-| `src/` | Source for the Chrome proxy, schema loader, helpers, and entrypoints. |
+| `src/` | Source code including utilities, manual overrides, and the generated Chrome mock. |
+| `src/generated.ts` | **AUTO-GENERATED** - Do not edit manually. Generated from the schema by `npm run build:mock`. |
 | `tests/` | Vitest suites covering every Chrome namespace plus integration helpers. |
-| `scripts/` | Build utilities such as `download-api-docs.js` and `generate-schema.js`. |
+| `scripts/` | Build utilities such as `download-api-docs.js`, `generate-schema.js`, and `generate-mock.js`. |
 | `docs/chrome_extensions_reference/` | Snapshot of the upstream Chrome reference; regenerated when the schema refreshes. |
 | `lib/` | Rollup output that gets published to npm; never edit by hand. |
 | `dist/` | Temporary artifacts like `npm pack` tarballs. |
@@ -56,6 +57,7 @@ This document explains how to get a local environment ready, run the test suite,
 | --- | --- |
 | `npm test` | Runs the full Vitest suite once (CI mode). |
 | `npx vitest --watch` | Interactive watch mode while iterating on `src/` or `tests/`. |
+| `npm run build:mock` | Generates `src/generated.ts` from `src/vitest-chrome-schema.json`. Run this after updating the schema. |
 | `npm run build` | Bundles `src/` into `lib/` using Rollup. Required before publishing. |
 | `npm run build:docs` | Downloads the latest Chrome extension docs into `docs/chrome_extensions_reference/`. Requires network access. |
 | `npm run build:schema` | Parses the downloaded docs and regenerates `src/vitest-chrome-schema.json` plus related types. |
@@ -71,6 +73,19 @@ This document explains how to get a local environment ready, run the test suite,
 
 Refreshing the schema or docs is only needed when upstream Chrome APIs change, but every contributor should know the flow:
 
+**Understanding the Pipeline:**
+1. Chrome Docs (Markdown) → `docs/chrome_extensions_reference/*.md` (via `npm run build:docs`)
+2. Markdown → Structured JSON → `src/vitest-chrome-schema.json` (via `npm run build:schema`)
+3. JSON Schema → TypeScript Code → `src/generated.ts` (via `npm run build:mock`)
+4. TypeScript → Bundled JS → `lib/` (via `npm run build`)
+
+**The Schema File (`src/vitest-chrome-schema.json`):**
+This intermediate JSON file serves several important purposes:
+- **Separation of Concerns**: Complex markdown parsing is isolated from code generation logic
+- **Debuggability**: You can inspect the JSON to see exactly what APIs were extracted from the docs
+- **Version Control**: Schema changes show up as clear diffs, making it obvious what APIs were added/removed
+- **Reusability**: The structured data could be used for validation, documentation generation, or other tooling
+
 1. **Download the reference docs** (updates `docs/chrome_extensions_reference/`):
 
    ```sh
@@ -83,7 +98,13 @@ Refreshing the schema or docs is only needed when upstream Chrome APIs change, b
    npm run build:schema
    ```
 
-3. **Verify everything still passes:**
+3. **Generate the mock code** (creates `src/generated.ts` from the updated schema):
+
+   ```sh
+   npm run build:mock
+   ```
+
+4. **Verify everything still passes:**
 
    ```sh
    npm test
@@ -104,7 +125,7 @@ Commit regenerated assets alongside any code changes so reviewers can see the co
    npm run build
    ```
 
-5. If your work touches Chrome API coverage, also run `npm run build:docs && npm run build:schema` and commit the results.
+5. If your work touches Chrome API coverage, also run `npm run build:docs && npm run build:schema && npm run build:mock` and commit the results.
 6. Follow up with the publishing checklist in `docs/PUBLISHING.md` if you are preparing a release.
 
 ## Troubleshooting Tips
