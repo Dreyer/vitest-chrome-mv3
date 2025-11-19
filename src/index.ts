@@ -49,28 +49,31 @@ const chromeStatic = deepMerge(
 ) as typeof generatedChrome;
 
 // Wrap in a thin Proxy to handle lastError validation
-export const chrome = new Proxy<VitestChrome>(chromeStatic as unknown as VitestChrome, {
-  set(target, prop, value) {
-    if (
-      prop === 'runtime' &&
-      value &&
-      typeof value === 'object' &&
-      'lastError' in value
-    ) {
-      const lastError = (value as { lastError?: unknown }).lastError;
+export const chrome = new Proxy<VitestChrome>(
+  chromeStatic as unknown as VitestChrome,
+  {
+    set(target, prop, value) {
       if (
-        lastError &&
-        (!(typeof lastError === 'object') ||
-          typeof (lastError as { message?: unknown })?.message !== 'string')
+        prop === 'runtime' &&
+        value &&
+        typeof value === 'object' &&
+        'lastError' in value
       ) {
-        throw new TypeError(
-          'chrome.runtime.lastError should be type { message: string }',
-        );
+        const lastError = (value as { lastError?: unknown }).lastError;
+        if (
+          lastError &&
+          (!(typeof lastError === 'object') ||
+            typeof (lastError as { message?: unknown })?.message !== 'string')
+        ) {
+          throw new TypeError(
+            'chrome.runtime.lastError should be type { message: string }',
+          );
+        }
       }
-    }
-    return Reflect.set(target, prop, value);
+      return Reflect.set(target, prop, value);
+    },
   },
-});
+);
 
 /**
  * Recursively clears all mocks in the chrome object

@@ -62,7 +62,11 @@ export function deepMerge<T extends Record<string, unknown>>(
 ): T {
   const result = { ...target };
   for (const key in source) {
-    if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+    if (
+      source[key] &&
+      typeof source[key] === 'object' &&
+      !Array.isArray(source[key])
+    ) {
       result[key] = deepMerge(
         (result[key] as Record<string, unknown>) || {},
         source[key] as Record<string, unknown>,
@@ -73,4 +77,3 @@ export function deepMerge<T extends Record<string, unknown>>(
   }
   return result;
 }
-

@@ -5,8 +5,7 @@
 import { genericFunction, createEvent } from './utils';
 
 export const generatedChrome = {
-  accessibilityFeatures: {
-  },
+  accessibilityFeatures: {},
   alarms: {
     clear: genericFunction('chrome.alarms.clear'),
     clearAll: genericFunction('chrome.alarms.clearAll', { isPromise: true }),
@@ -49,62 +48,107 @@ export const generatedChrome = {
     remove: genericFunction('chrome.browsingData.remove'),
     removeAppcache: genericFunction('chrome.browsingData.removeAppcache'),
     removeCache: genericFunction('chrome.browsingData.removeCache'),
-    removeCacheStorage: genericFunction('chrome.browsingData.removeCacheStorage'),
+    removeCacheStorage: genericFunction(
+      'chrome.browsingData.removeCacheStorage',
+    ),
     removeCookies: genericFunction('chrome.browsingData.removeCookies'),
     removeDownloads: genericFunction('chrome.browsingData.removeDownloads'),
     removeFileSystems: genericFunction('chrome.browsingData.removeFileSystems'),
     removeFormData: genericFunction('chrome.browsingData.removeFormData'),
     removeHistory: genericFunction('chrome.browsingData.removeHistory'),
     removeIndexedDB: genericFunction('chrome.browsingData.removeIndexedDB'),
-    removeLocalStorage: genericFunction('chrome.browsingData.removeLocalStorage'),
+    removeLocalStorage: genericFunction(
+      'chrome.browsingData.removeLocalStorage',
+    ),
     removePasswords: genericFunction('chrome.browsingData.removePasswords'),
     removePluginData: genericFunction('chrome.browsingData.removePluginData'),
-    removeServiceWorkers: genericFunction('chrome.browsingData.removeServiceWorkers'),
+    removeServiceWorkers: genericFunction(
+      'chrome.browsingData.removeServiceWorkers',
+    ),
     removeWebSQL: genericFunction('chrome.browsingData.removeWebSQL'),
-    settings: genericFunction('chrome.browsingData.settings', { isPromise: true }),
+    settings: genericFunction('chrome.browsingData.settings', {
+      isPromise: true,
+    }),
   },
   contextMenus: {
     create: genericFunction('chrome.contextMenus.create'),
     remove: genericFunction('chrome.contextMenus.remove'),
-    removeAll: genericFunction('chrome.contextMenus.removeAll', { isPromise: true }),
+    removeAll: genericFunction('chrome.contextMenus.removeAll', {
+      isPromise: true,
+    }),
     update: genericFunction('chrome.contextMenus.update'),
     onClicked: createEvent(),
   },
   cookies: {
     get: genericFunction('chrome.cookies.get'),
     getAll: genericFunction('chrome.cookies.getAll'),
-    getAllCookieStores: genericFunction('chrome.cookies.getAllCookieStores', { isPromise: true }),
+    getAllCookieStores: genericFunction('chrome.cookies.getAllCookieStores', {
+      isPromise: true,
+    }),
     getPartitionKey: genericFunction('chrome.cookies.getPartitionKey'),
     remove: genericFunction('chrome.cookies.remove'),
     set: genericFunction('chrome.cookies.set'),
     onChanged: createEvent(),
   },
-  declarativeContent: {
-  },
+  declarativeContent: {},
   declarativeNetRequest: {
-    getAvailableStaticRuleCount: genericFunction('chrome.declarativeNetRequest.getAvailableStaticRuleCount', { isPromise: true }),
-    getDisabledRuleIds: genericFunction('chrome.declarativeNetRequest.getDisabledRuleIds'),
-    getDynamicRules: genericFunction('chrome.declarativeNetRequest.getDynamicRules'),
-    getEnabledRulesets: genericFunction('chrome.declarativeNetRequest.getEnabledRulesets', { isPromise: true }),
-    getMatchedRules: genericFunction('chrome.declarativeNetRequest.getMatchedRules'),
-    getSessionRules: genericFunction('chrome.declarativeNetRequest.getSessionRules'),
-    isRegexSupported: genericFunction('chrome.declarativeNetRequest.isRegexSupported'),
-    setExtensionActionOptions: genericFunction('chrome.declarativeNetRequest.setExtensionActionOptions'),
-    testMatchOutcome: genericFunction('chrome.declarativeNetRequest.testMatchOutcome'),
-    updateDynamicRules: genericFunction('chrome.declarativeNetRequest.updateDynamicRules'),
-    updateEnabledRulesets: genericFunction('chrome.declarativeNetRequest.updateEnabledRulesets'),
-    updateSessionRules: genericFunction('chrome.declarativeNetRequest.updateSessionRules'),
-    updateStaticRules: genericFunction('chrome.declarativeNetRequest.updateStaticRules'),
+    getAvailableStaticRuleCount: genericFunction(
+      'chrome.declarativeNetRequest.getAvailableStaticRuleCount',
+      { isPromise: true },
+    ),
+    getDisabledRuleIds: genericFunction(
+      'chrome.declarativeNetRequest.getDisabledRuleIds',
+    ),
+    getDynamicRules: genericFunction(
+      'chrome.declarativeNetRequest.getDynamicRules',
+    ),
+    getEnabledRulesets: genericFunction(
+      'chrome.declarativeNetRequest.getEnabledRulesets',
+      { isPromise: true },
+    ),
+    getMatchedRules: genericFunction(
+      'chrome.declarativeNetRequest.getMatchedRules',
+    ),
+    getSessionRules: genericFunction(
+      'chrome.declarativeNetRequest.getSessionRules',
+    ),
+    isRegexSupported: genericFunction(
+      'chrome.declarativeNetRequest.isRegexSupported',
+    ),
+    setExtensionActionOptions: genericFunction(
+      'chrome.declarativeNetRequest.setExtensionActionOptions',
+    ),
+    testMatchOutcome: genericFunction(
+      'chrome.declarativeNetRequest.testMatchOutcome',
+    ),
+    updateDynamicRules: genericFunction(
+      'chrome.declarativeNetRequest.updateDynamicRules',
+    ),
+    updateEnabledRulesets: genericFunction(
+      'chrome.declarativeNetRequest.updateEnabledRulesets',
+    ),
+    updateSessionRules: genericFunction(
+      'chrome.declarativeNetRequest.updateSessionRules',
+    ),
+    updateStaticRules: genericFunction(
+      'chrome.declarativeNetRequest.updateStaticRules',
+    ),
     onRuleMatchedDebug: createEvent(),
   },
   desktopCapture: {
-    cancelChooseDesktopMedia: genericFunction('chrome.desktopCapture.cancelChooseDesktopMedia'),
-    chooseDesktopMedia: genericFunction('chrome.desktopCapture.chooseDesktopMedia'),
+    cancelChooseDesktopMedia: genericFunction(
+      'chrome.desktopCapture.cancelChooseDesktopMedia',
+    ),
+    chooseDesktopMedia: genericFunction(
+      'chrome.desktopCapture.chooseDesktopMedia',
+    ),
   },
   devtools: {
     inspectedWindow: {
       eval: genericFunction('chrome.devtools.inspectedWindow.eval'),
-      getResources: genericFunction('chrome.devtools.inspectedWindow.getResources'),
+      getResources: genericFunction(
+        'chrome.devtools.inspectedWindow.getResources',
+      ),
       reload: genericFunction('chrome.devtools.inspectedWindow.reload'),
       onResourceAdded: createEvent(),
       onResourceContentCommitted: createEvent(),
@@ -112,8 +156,12 @@ export const generatedChrome = {
     panels: {
       create: genericFunction('chrome.devtools.panels.create'),
       openResource: genericFunction('chrome.devtools.panels.openResource'),
-      setOpenResourceHandler: genericFunction('chrome.devtools.panels.setOpenResourceHandler'),
-      setThemeChangeHandler: genericFunction('chrome.devtools.panels.setThemeChangeHandler'),
+      setOpenResourceHandler: genericFunction(
+        'chrome.devtools.panels.setOpenResourceHandler',
+      ),
+      setThemeChangeHandler: genericFunction(
+        'chrome.devtools.panels.setThemeChangeHandler',
+      ),
     },
   },
   documentScan: {
@@ -129,53 +177,109 @@ export const generatedChrome = {
   },
   enterprise: {
     deviceAttributes: {
-      getDeviceAnnotatedLocation: genericFunction('chrome.enterprise.deviceAttributes.getDeviceAnnotatedLocation', { isPromise: true }),
-      getDeviceAssetId: genericFunction('chrome.enterprise.deviceAttributes.getDeviceAssetId', { isPromise: true }),
-      getDeviceHostname: genericFunction('chrome.enterprise.deviceAttributes.getDeviceHostname', { isPromise: true }),
-      getDeviceSerialNumber: genericFunction('chrome.enterprise.deviceAttributes.getDeviceSerialNumber', { isPromise: true }),
-      getDirectoryDeviceId: genericFunction('chrome.enterprise.deviceAttributes.getDirectoryDeviceId', { isPromise: true }),
+      getDeviceAnnotatedLocation: genericFunction(
+        'chrome.enterprise.deviceAttributes.getDeviceAnnotatedLocation',
+        { isPromise: true },
+      ),
+      getDeviceAssetId: genericFunction(
+        'chrome.enterprise.deviceAttributes.getDeviceAssetId',
+        { isPromise: true },
+      ),
+      getDeviceHostname: genericFunction(
+        'chrome.enterprise.deviceAttributes.getDeviceHostname',
+        { isPromise: true },
+      ),
+      getDeviceSerialNumber: genericFunction(
+        'chrome.enterprise.deviceAttributes.getDeviceSerialNumber',
+        { isPromise: true },
+      ),
+      getDirectoryDeviceId: genericFunction(
+        'chrome.enterprise.deviceAttributes.getDirectoryDeviceId',
+        { isPromise: true },
+      ),
     },
     networkingAttributes: {
-      getNetworkDetails: genericFunction('chrome.enterprise.networkingAttributes.getNetworkDetails', { isPromise: true }),
+      getNetworkDetails: genericFunction(
+        'chrome.enterprise.networkingAttributes.getNetworkDetails',
+        { isPromise: true },
+      ),
     },
     platformKeys: {
-      challengeKey: genericFunction('chrome.enterprise.platformKeys.challengeKey'),
-      challengeMachineKey: genericFunction('chrome.enterprise.platformKeys.challengeMachineKey'),
-      challengeUserKey: genericFunction('chrome.enterprise.platformKeys.challengeUserKey'),
-      getCertificates: genericFunction('chrome.enterprise.platformKeys.getCertificates'),
-      getTokens: genericFunction('chrome.enterprise.platformKeys.getTokens', { isPromise: true }),
-      importCertificate: genericFunction('chrome.enterprise.platformKeys.importCertificate'),
-      removeCertificate: genericFunction('chrome.enterprise.platformKeys.removeCertificate'),
+      challengeKey: genericFunction(
+        'chrome.enterprise.platformKeys.challengeKey',
+      ),
+      challengeMachineKey: genericFunction(
+        'chrome.enterprise.platformKeys.challengeMachineKey',
+      ),
+      challengeUserKey: genericFunction(
+        'chrome.enterprise.platformKeys.challengeUserKey',
+      ),
+      getCertificates: genericFunction(
+        'chrome.enterprise.platformKeys.getCertificates',
+      ),
+      getTokens: genericFunction('chrome.enterprise.platformKeys.getTokens', {
+        isPromise: true,
+      }),
+      importCertificate: genericFunction(
+        'chrome.enterprise.platformKeys.importCertificate',
+      ),
+      removeCertificate: genericFunction(
+        'chrome.enterprise.platformKeys.removeCertificate',
+      ),
     },
   },
-  events: {
-  },
+  events: {},
   extension: {
     getBackgroundPage: genericFunction('chrome.extension.getBackgroundPage'),
     getViews: genericFunction('chrome.extension.getViews'),
-    isAllowedFileSchemeAccess: genericFunction('chrome.extension.isAllowedFileSchemeAccess', { isPromise: true }),
-    isAllowedIncognitoAccess: genericFunction('chrome.extension.isAllowedIncognitoAccess', { isPromise: true }),
+    isAllowedFileSchemeAccess: genericFunction(
+      'chrome.extension.isAllowedFileSchemeAccess',
+      { isPromise: true },
+    ),
+    isAllowedIncognitoAccess: genericFunction(
+      'chrome.extension.isAllowedIncognitoAccess',
+      { isPromise: true },
+    ),
     setUpdateUrlData: genericFunction('chrome.extension.setUpdateUrlData'),
   },
-  extensionTypes: {
-  },
+  extensionTypes: {},
   fileBrowserHandler: {
     onExecute: createEvent(),
   },
   fontSettings: {
-    clearDefaultFixedFontSize: genericFunction('chrome.fontSettings.clearDefaultFixedFontSize'),
-    clearDefaultFontSize: genericFunction('chrome.fontSettings.clearDefaultFontSize'),
+    clearDefaultFixedFontSize: genericFunction(
+      'chrome.fontSettings.clearDefaultFixedFontSize',
+    ),
+    clearDefaultFontSize: genericFunction(
+      'chrome.fontSettings.clearDefaultFontSize',
+    ),
     clearFont: genericFunction('chrome.fontSettings.clearFont'),
-    clearMinimumFontSize: genericFunction('chrome.fontSettings.clearMinimumFontSize'),
-    getDefaultFixedFontSize: genericFunction('chrome.fontSettings.getDefaultFixedFontSize'),
-    getDefaultFontSize: genericFunction('chrome.fontSettings.getDefaultFontSize'),
+    clearMinimumFontSize: genericFunction(
+      'chrome.fontSettings.clearMinimumFontSize',
+    ),
+    getDefaultFixedFontSize: genericFunction(
+      'chrome.fontSettings.getDefaultFixedFontSize',
+    ),
+    getDefaultFontSize: genericFunction(
+      'chrome.fontSettings.getDefaultFontSize',
+    ),
     getFont: genericFunction('chrome.fontSettings.getFont'),
-    getFontList: genericFunction('chrome.fontSettings.getFontList', { isPromise: true }),
-    getMinimumFontSize: genericFunction('chrome.fontSettings.getMinimumFontSize'),
-    setDefaultFixedFontSize: genericFunction('chrome.fontSettings.setDefaultFixedFontSize'),
-    setDefaultFontSize: genericFunction('chrome.fontSettings.setDefaultFontSize'),
+    getFontList: genericFunction('chrome.fontSettings.getFontList', {
+      isPromise: true,
+    }),
+    getMinimumFontSize: genericFunction(
+      'chrome.fontSettings.getMinimumFontSize',
+    ),
+    setDefaultFixedFontSize: genericFunction(
+      'chrome.fontSettings.setDefaultFixedFontSize',
+    ),
+    setDefaultFontSize: genericFunction(
+      'chrome.fontSettings.setDefaultFontSize',
+    ),
     setFont: genericFunction('chrome.fontSettings.setFont'),
-    setMinimumFontSize: genericFunction('chrome.fontSettings.setMinimumFontSize'),
+    setMinimumFontSize: genericFunction(
+      'chrome.fontSettings.setMinimumFontSize',
+    ),
     onDefaultFixedFontSizeChanged: createEvent(),
     onDefaultFontSizeChanged: createEvent(),
     onFontChanged: createEvent(),
@@ -201,32 +305,49 @@ export const generatedChrome = {
   },
   i18n: {
     detectLanguage: genericFunction('chrome.i18n.detectLanguage'),
-    getAcceptLanguages: genericFunction('chrome.i18n.getAcceptLanguages', { isPromise: true }),
+    getAcceptLanguages: genericFunction('chrome.i18n.getAcceptLanguages', {
+      isPromise: true,
+    }),
     getMessage: genericFunction('chrome.i18n.getMessage'),
     getUILanguage: genericFunction('chrome.i18n.getUILanguage'),
   },
   identity: {
-    clearAllCachedAuthTokens: genericFunction('chrome.identity.clearAllCachedAuthTokens', { isPromise: true }),
-    getAccounts: genericFunction('chrome.identity.getAccounts', { isPromise: true }),
+    clearAllCachedAuthTokens: genericFunction(
+      'chrome.identity.clearAllCachedAuthTokens',
+      { isPromise: true },
+    ),
+    getAccounts: genericFunction('chrome.identity.getAccounts', {
+      isPromise: true,
+    }),
     getAuthToken: genericFunction('chrome.identity.getAuthToken'),
     getProfileUserInfo: genericFunction('chrome.identity.getProfileUserInfo'),
     getRedirectURL: genericFunction('chrome.identity.getRedirectURL'),
     launchWebAuthFlow: genericFunction('chrome.identity.launchWebAuthFlow'),
-    removeCachedAuthToken: genericFunction('chrome.identity.removeCachedAuthToken'),
+    removeCachedAuthToken: genericFunction(
+      'chrome.identity.removeCachedAuthToken',
+    ),
     onSignInChanged: createEvent(),
   },
   input: {
     ime: {
       clearComposition: genericFunction('chrome.input.ime.clearComposition'),
       commitText: genericFunction('chrome.input.ime.commitText'),
-      deleteSurroundingText: genericFunction('chrome.input.ime.deleteSurroundingText'),
+      deleteSurroundingText: genericFunction(
+        'chrome.input.ime.deleteSurroundingText',
+      ),
       hideInputView: genericFunction('chrome.input.ime.hideInputView'),
       keyEventHandled: genericFunction('chrome.input.ime.keyEventHandled'),
       sendKeyEvents: genericFunction('chrome.input.ime.sendKeyEvents'),
-      setAssistiveWindowButtonHighlighted: genericFunction('chrome.input.ime.setAssistiveWindowButtonHighlighted'),
-      setAssistiveWindowProperties: genericFunction('chrome.input.ime.setAssistiveWindowProperties'),
+      setAssistiveWindowButtonHighlighted: genericFunction(
+        'chrome.input.ime.setAssistiveWindowButtonHighlighted',
+      ),
+      setAssistiveWindowProperties: genericFunction(
+        'chrome.input.ime.setAssistiveWindowProperties',
+      ),
       setCandidates: genericFunction('chrome.input.ime.setCandidates'),
-      setCandidateWindowProperties: genericFunction('chrome.input.ime.setCandidateWindowProperties'),
+      setCandidateWindowProperties: genericFunction(
+        'chrome.input.ime.setCandidateWindowProperties',
+      ),
       setComposition: genericFunction('chrome.input.ime.setComposition'),
       setCursorPosition: genericFunction('chrome.input.ime.setCursorPosition'),
       setMenuItems: genericFunction('chrome.input.ime.setMenuItems'),
@@ -245,16 +366,24 @@ export const generatedChrome = {
     },
   },
   instanceID: {
-    deleteID: genericFunction('chrome.instanceID.deleteID', { isPromise: true }),
+    deleteID: genericFunction('chrome.instanceID.deleteID', {
+      isPromise: true,
+    }),
     deleteToken: genericFunction('chrome.instanceID.deleteToken'),
-    getCreationTime: genericFunction('chrome.instanceID.getCreationTime', { isPromise: true }),
+    getCreationTime: genericFunction('chrome.instanceID.getCreationTime', {
+      isPromise: true,
+    }),
     getID: genericFunction('chrome.instanceID.getID', { isPromise: true }),
     getToken: genericFunction('chrome.instanceID.getToken'),
     onTokenRefresh: createEvent(),
   },
   loginState: {
-    getProfileType: genericFunction('chrome.loginState.getProfileType', { isPromise: true }),
-    getSessionState: genericFunction('chrome.loginState.getSessionState', { isPromise: true }),
+    getProfileType: genericFunction('chrome.loginState.getProfileType', {
+      isPromise: true,
+    }),
+    getSessionState: genericFunction('chrome.loginState.getSessionState', {
+      isPromise: true,
+    }),
     onSessionStateChanged: createEvent(),
   },
   management: {
@@ -262,10 +391,17 @@ export const generatedChrome = {
     generateAppForLink: genericFunction('chrome.management.generateAppForLink'),
     get: genericFunction('chrome.management.get'),
     getAll: genericFunction('chrome.management.getAll', { isPromise: true }),
-    getPermissionWarningsById: genericFunction('chrome.management.getPermissionWarningsById'),
-    getPermissionWarningsByManifest: genericFunction('chrome.management.getPermissionWarningsByManifest'),
+    getPermissionWarningsById: genericFunction(
+      'chrome.management.getPermissionWarningsById',
+    ),
+    getPermissionWarningsByManifest: genericFunction(
+      'chrome.management.getPermissionWarningsByManifest',
+    ),
     getSelf: genericFunction('chrome.management.getSelf', { isPromise: true }),
-    installReplacementWebApp: genericFunction('chrome.management.installReplacementWebApp', { isPromise: true }),
+    installReplacementWebApp: genericFunction(
+      'chrome.management.installReplacementWebApp',
+      { isPromise: true },
+    ),
     launchApp: genericFunction('chrome.management.launchApp'),
     setEnabled: genericFunction('chrome.management.setEnabled'),
     setLaunchType: genericFunction('chrome.management.setLaunchType'),
@@ -280,7 +416,10 @@ export const generatedChrome = {
     clear: genericFunction('chrome.notifications.clear'),
     create: genericFunction('chrome.notifications.create'),
     getAll: genericFunction('chrome.notifications.getAll', { isPromise: true }),
-    getPermissionLevel: genericFunction('chrome.notifications.getPermissionLevel', { isPromise: true }),
+    getPermissionLevel: genericFunction(
+      'chrome.notifications.getPermissionLevel',
+      { isPromise: true },
+    ),
     update: genericFunction('chrome.notifications.update'),
     onButtonClicked: createEvent(),
     onClicked: createEvent(),
@@ -289,11 +428,15 @@ export const generatedChrome = {
     onShowSettings: createEvent(),
   },
   offscreen: {
-    closeDocument: genericFunction('chrome.offscreen.closeDocument', { isPromise: true }),
+    closeDocument: genericFunction('chrome.offscreen.closeDocument', {
+      isPromise: true,
+    }),
     createDocument: genericFunction('chrome.offscreen.createDocument'),
   },
   omnibox: {
-    setDefaultSuggestion: genericFunction('chrome.omnibox.setDefaultSuggestion'),
+    setDefaultSuggestion: genericFunction(
+      'chrome.omnibox.setDefaultSuggestion',
+    ),
     onDeleteSuggestion: createEvent(),
     onInputCancelled: createEvent(),
     onInputChanged: createEvent(),
@@ -304,11 +447,15 @@ export const generatedChrome = {
     saveAsMHTML: genericFunction('chrome.pageCapture.saveAsMHTML'),
   },
   permissions: {
-    addHostAccessRequest: genericFunction('chrome.permissions.addHostAccessRequest'),
+    addHostAccessRequest: genericFunction(
+      'chrome.permissions.addHostAccessRequest',
+    ),
     contains: genericFunction('chrome.permissions.contains'),
     getAll: genericFunction('chrome.permissions.getAll', { isPromise: true }),
     remove: genericFunction('chrome.permissions.remove'),
-    removeHostAccessRequest: genericFunction('chrome.permissions.removeHostAccessRequest'),
+    removeHostAccessRequest: genericFunction(
+      'chrome.permissions.removeHostAccessRequest',
+    ),
     request: genericFunction('chrome.permissions.request'),
     onAdded: createEvent(),
     onRemoved: createEvent(),
@@ -316,13 +463,19 @@ export const generatedChrome = {
   platformKeys: {
     getKeyPair: genericFunction('chrome.platformKeys.getKeyPair'),
     getKeyPairBySpki: genericFunction('chrome.platformKeys.getKeyPairBySpki'),
-    selectClientCertificates: genericFunction('chrome.platformKeys.selectClientCertificates'),
+    selectClientCertificates: genericFunction(
+      'chrome.platformKeys.selectClientCertificates',
+    ),
     subtleCrypto: genericFunction('chrome.platformKeys.subtleCrypto'),
-    verifyTLSServerCertificate: genericFunction('chrome.platformKeys.verifyTLSServerCertificate'),
+    verifyTLSServerCertificate: genericFunction(
+      'chrome.platformKeys.verifyTLSServerCertificate',
+    ),
   },
   power: {
     releaseKeepAwake: genericFunction('chrome.power.releaseKeepAwake'),
-    reportActivity: genericFunction('chrome.power.reportActivity', { isPromise: true }),
+    reportActivity: genericFunction('chrome.power.reportActivity', {
+      isPromise: true,
+    }),
     requestKeepAwake: genericFunction('chrome.power.requestKeepAwake'),
   },
   printerProvider: {
@@ -335,16 +488,19 @@ export const generatedChrome = {
     cancelJob: genericFunction('chrome.printing.cancelJob'),
     getJobStatus: genericFunction('chrome.printing.getJobStatus'),
     getPrinterInfo: genericFunction('chrome.printing.getPrinterInfo'),
-    getPrinters: genericFunction('chrome.printing.getPrinters', { isPromise: true }),
+    getPrinters: genericFunction('chrome.printing.getPrinters', {
+      isPromise: true,
+    }),
     submitJob: genericFunction('chrome.printing.submitJob'),
     onJobStatusChanged: createEvent(),
   },
   printingMetrics: {
-    getPrintJobs: genericFunction('chrome.printingMetrics.getPrintJobs', { isPromise: true }),
+    getPrintJobs: genericFunction('chrome.printingMetrics.getPrintJobs', {
+      isPromise: true,
+    }),
     onPrintJobFinished: createEvent(),
   },
-  privacy: {
-  },
+  privacy: {},
   proxy: {
     onProxyError: createEvent(),
   },
@@ -360,16 +516,27 @@ export const generatedChrome = {
   runtime: {
     connect: genericFunction('chrome.runtime.connect'),
     connectNative: genericFunction('chrome.runtime.connectNative'),
-    getBackgroundPage: genericFunction('chrome.runtime.getBackgroundPage', { isPromise: true }),
+    getBackgroundPage: genericFunction('chrome.runtime.getBackgroundPage', {
+      isPromise: true,
+    }),
     getContexts: genericFunction('chrome.runtime.getContexts'),
     getManifest: genericFunction('chrome.runtime.getManifest'),
-    getPackageDirectoryEntry: genericFunction('chrome.runtime.getPackageDirectoryEntry', { isPromise: true }),
-    getPlatformInfo: genericFunction('chrome.runtime.getPlatformInfo', { isPromise: true }),
+    getPackageDirectoryEntry: genericFunction(
+      'chrome.runtime.getPackageDirectoryEntry',
+      { isPromise: true },
+    ),
+    getPlatformInfo: genericFunction('chrome.runtime.getPlatformInfo', {
+      isPromise: true,
+    }),
     getURL: genericFunction('chrome.runtime.getURL'),
     getVersion: genericFunction('chrome.runtime.getVersion'),
-    openOptionsPage: genericFunction('chrome.runtime.openOptionsPage', { isPromise: true }),
+    openOptionsPage: genericFunction('chrome.runtime.openOptionsPage', {
+      isPromise: true,
+    }),
     reload: genericFunction('chrome.runtime.reload'),
-    requestUpdateCheck: genericFunction('chrome.runtime.requestUpdateCheck', { isPromise: true }),
+    requestUpdateCheck: genericFunction('chrome.runtime.requestUpdateCheck', {
+      isPromise: true,
+    }),
     restart: genericFunction('chrome.runtime.restart'),
     restartAfterDelay: genericFunction('chrome.runtime.restartAfterDelay'),
     sendMessage: genericFunction('chrome.runtime.sendMessage'),
@@ -392,12 +559,20 @@ export const generatedChrome = {
   },
   scripting: {
     executeScript: genericFunction('chrome.scripting.executeScript'),
-    getRegisteredContentScripts: genericFunction('chrome.scripting.getRegisteredContentScripts'),
+    getRegisteredContentScripts: genericFunction(
+      'chrome.scripting.getRegisteredContentScripts',
+    ),
     insertCSS: genericFunction('chrome.scripting.insertCSS'),
-    registerContentScripts: genericFunction('chrome.scripting.registerContentScripts'),
+    registerContentScripts: genericFunction(
+      'chrome.scripting.registerContentScripts',
+    ),
     removeCSS: genericFunction('chrome.scripting.removeCSS'),
-    unregisterContentScripts: genericFunction('chrome.scripting.unregisterContentScripts'),
-    updateContentScripts: genericFunction('chrome.scripting.updateContentScripts'),
+    unregisterContentScripts: genericFunction(
+      'chrome.scripting.unregisterContentScripts',
+    ),
+    updateContentScripts: genericFunction(
+      'chrome.scripting.updateContentScripts',
+    ),
   },
   search: {
     query: genericFunction('chrome.search.query'),
@@ -409,9 +584,13 @@ export const generatedChrome = {
     onChanged: createEvent(),
   },
   sidePanel: {
-    getLayout: genericFunction('chrome.sidePanel.getLayout', { isPromise: true }),
+    getLayout: genericFunction('chrome.sidePanel.getLayout', {
+      isPromise: true,
+    }),
     getOptions: genericFunction('chrome.sidePanel.getOptions'),
-    getPanelBehavior: genericFunction('chrome.sidePanel.getPanelBehavior', { isPromise: true }),
+    getPanelBehavior: genericFunction('chrome.sidePanel.getPanelBehavior', {
+      isPromise: true,
+    }),
     open: genericFunction('chrome.sidePanel.open'),
     setOptions: genericFunction('chrome.sidePanel.setOptions'),
     setPanelBehavior: genericFunction('chrome.sidePanel.setPanelBehavior'),
@@ -422,29 +601,60 @@ export const generatedChrome = {
   },
   system: {
     cpu: {
-      getInfo: genericFunction('chrome.system.cpu.getInfo', { isPromise: true }),
+      getInfo: genericFunction('chrome.system.cpu.getInfo', {
+        isPromise: true,
+      }),
     },
     display: {
-      clearTouchCalibration: genericFunction('chrome.system.display.clearTouchCalibration'),
-      completeCustomTouchCalibration: genericFunction('chrome.system.display.completeCustomTouchCalibration'),
-      enableUnifiedDesktop: genericFunction('chrome.system.display.enableUnifiedDesktop'),
-      getDisplayLayout: genericFunction('chrome.system.display.getDisplayLayout', { isPromise: true }),
+      clearTouchCalibration: genericFunction(
+        'chrome.system.display.clearTouchCalibration',
+      ),
+      completeCustomTouchCalibration: genericFunction(
+        'chrome.system.display.completeCustomTouchCalibration',
+      ),
+      enableUnifiedDesktop: genericFunction(
+        'chrome.system.display.enableUnifiedDesktop',
+      ),
+      getDisplayLayout: genericFunction(
+        'chrome.system.display.getDisplayLayout',
+        { isPromise: true },
+      ),
       getInfo: genericFunction('chrome.system.display.getInfo'),
-      overscanCalibrationAdjust: genericFunction('chrome.system.display.overscanCalibrationAdjust'),
-      overscanCalibrationComplete: genericFunction('chrome.system.display.overscanCalibrationComplete'),
-      overscanCalibrationReset: genericFunction('chrome.system.display.overscanCalibrationReset'),
-      overscanCalibrationStart: genericFunction('chrome.system.display.overscanCalibrationStart'),
-      setDisplayLayout: genericFunction('chrome.system.display.setDisplayLayout'),
-      setDisplayProperties: genericFunction('chrome.system.display.setDisplayProperties'),
+      overscanCalibrationAdjust: genericFunction(
+        'chrome.system.display.overscanCalibrationAdjust',
+      ),
+      overscanCalibrationComplete: genericFunction(
+        'chrome.system.display.overscanCalibrationComplete',
+      ),
+      overscanCalibrationReset: genericFunction(
+        'chrome.system.display.overscanCalibrationReset',
+      ),
+      overscanCalibrationStart: genericFunction(
+        'chrome.system.display.overscanCalibrationStart',
+      ),
+      setDisplayLayout: genericFunction(
+        'chrome.system.display.setDisplayLayout',
+      ),
+      setDisplayProperties: genericFunction(
+        'chrome.system.display.setDisplayProperties',
+      ),
       setMirrorMode: genericFunction('chrome.system.display.setMirrorMode'),
-      showNativeTouchCalibration: genericFunction('chrome.system.display.showNativeTouchCalibration'),
-      startCustomTouchCalibration: genericFunction('chrome.system.display.startCustomTouchCalibration'),
+      showNativeTouchCalibration: genericFunction(
+        'chrome.system.display.showNativeTouchCalibration',
+      ),
+      startCustomTouchCalibration: genericFunction(
+        'chrome.system.display.startCustomTouchCalibration',
+      ),
       onDisplayChanged: createEvent(),
     },
     storage: {
       ejectDevice: genericFunction('chrome.system.storage.ejectDevice'),
-      getAvailableCapacity: genericFunction('chrome.system.storage.getAvailableCapacity'),
-      getInfo: genericFunction('chrome.system.storage.getInfo', { isPromise: true }),
+      getAvailableCapacity: genericFunction(
+        'chrome.system.storage.getAvailableCapacity',
+      ),
+      getInfo: genericFunction('chrome.system.storage.getInfo', {
+        isPromise: true,
+      }),
       onAttached: createEvent(),
       onDetached: createEvent(),
     },
@@ -454,7 +664,9 @@ export const generatedChrome = {
   },
   tabCapture: {
     capture: genericFunction('chrome.tabCapture.capture'),
-    getCapturedTabs: genericFunction('chrome.tabCapture.getCapturedTabs', { isPromise: true }),
+    getCapturedTabs: genericFunction('chrome.tabCapture.getCapturedTabs', {
+      isPromise: true,
+    }),
     getMediaStreamId: genericFunction('chrome.tabCapture.getMediaStreamId'),
     onStatusChanged: createEvent(),
   },
@@ -527,22 +739,28 @@ export const generatedChrome = {
     onStop: createEvent(),
     onUninstallLanguageRequest: createEvent(),
   },
-  types: {
-  },
+  types: {},
   userScripts: {
     configureWorld: genericFunction('chrome.userScripts.configureWorld'),
     execute: genericFunction('chrome.userScripts.execute'),
     getScripts: genericFunction('chrome.userScripts.getScripts'),
-    getWorldConfigurations: genericFunction('chrome.userScripts.getWorldConfigurations', { isPromise: true }),
+    getWorldConfigurations: genericFunction(
+      'chrome.userScripts.getWorldConfigurations',
+      { isPromise: true },
+    ),
     register: genericFunction('chrome.userScripts.register'),
-    resetWorldConfiguration: genericFunction('chrome.userScripts.resetWorldConfiguration'),
+    resetWorldConfiguration: genericFunction(
+      'chrome.userScripts.resetWorldConfiguration',
+    ),
     unregister: genericFunction('chrome.userScripts.unregister'),
     update: genericFunction('chrome.userScripts.update'),
   },
   vpnProvider: {
     createConfig: genericFunction('chrome.vpnProvider.createConfig'),
     destroyConfig: genericFunction('chrome.vpnProvider.destroyConfig'),
-    notifyConnectionStateChanged: genericFunction('chrome.vpnProvider.notifyConnectionStateChanged'),
+    notifyConnectionStateChanged: genericFunction(
+      'chrome.vpnProvider.notifyConnectionStateChanged',
+    ),
     sendPacket: genericFunction('chrome.vpnProvider.sendPacket'),
     setParameters: genericFunction('chrome.vpnProvider.setParameters'),
     onConfigCreated: createEvent(),
@@ -552,11 +770,21 @@ export const generatedChrome = {
     onUIEvent: createEvent(),
   },
   webAuthenticationProxy: {
-    attach: genericFunction('chrome.webAuthenticationProxy.attach', { isPromise: true }),
-    completeCreateRequest: genericFunction('chrome.webAuthenticationProxy.completeCreateRequest'),
-    completeGetRequest: genericFunction('chrome.webAuthenticationProxy.completeGetRequest'),
-    completeIsUvpaaRequest: genericFunction('chrome.webAuthenticationProxy.completeIsUvpaaRequest'),
-    detach: genericFunction('chrome.webAuthenticationProxy.detach', { isPromise: true }),
+    attach: genericFunction('chrome.webAuthenticationProxy.attach', {
+      isPromise: true,
+    }),
+    completeCreateRequest: genericFunction(
+      'chrome.webAuthenticationProxy.completeCreateRequest',
+    ),
+    completeGetRequest: genericFunction(
+      'chrome.webAuthenticationProxy.completeGetRequest',
+    ),
+    completeIsUvpaaRequest: genericFunction(
+      'chrome.webAuthenticationProxy.completeIsUvpaaRequest',
+    ),
+    detach: genericFunction('chrome.webAuthenticationProxy.detach', {
+      isPromise: true,
+    }),
     onCreateRequest: createEvent(),
     onGetRequest: createEvent(),
     onIsUvpaaRequest: createEvent(),
@@ -577,7 +805,10 @@ export const generatedChrome = {
     onTabReplaced: createEvent(),
   },
   webRequest: {
-    handlerBehaviorChanged: genericFunction('chrome.webRequest.handlerBehaviorChanged', { isPromise: true }),
+    handlerBehaviorChanged: genericFunction(
+      'chrome.webRequest.handlerBehaviorChanged',
+      { isPromise: true },
+    ),
     onActionIgnored: createEvent(),
     onAuthRequired: createEvent(),
     onBeforeRedirect: createEvent(),
