@@ -1,5 +1,5 @@
-// This file is a placeholder and will be populated with the full type definitions
-// once the schema generation script is complete.
+// Type definitions for vitest-chrome-mv3
+// The chrome mock is generated from vitest-chrome-schema.json via npm run build:mock
 
 export namespace Storage {
   export interface StorageArea {
